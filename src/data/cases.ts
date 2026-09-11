@@ -13,10 +13,13 @@ export type CaseStudy = {
   dek: string;
   year: string;
   role: string;
-  /** [PLACEHOLDER] Replace with the real client or product name. */
   client: string;
   duration: string;
+  /** When true, the case leads Selected work on `/`. */
+  featured?: boolean;
   tags: string[];
+  /** BCP 47 tag for title, dek, and narrative copy. */
+  locale?: string;
   overview: string;
   /** Fixed case-study body: 问题 / 过程 / 结果. Do not add extra section keys. */
   narrative: Record<CaseNarrativeKey, string>;
@@ -25,82 +28,61 @@ export type CaseStudy = {
     figma?: string;
     live?: string;
   };
+  /** Captions for PlaceholderFigure slots until real images land. */
+  figureCaptions?: {
+    hero?: string;
+    secondary?: string;
+  };
 };
 
 /**
- * Placeholder case studies for the editorial template.
+ * Editorial case studies for the personal design site.
  * Each case must keep the 问题 / 过程 / 结果 narrative.
- * Replace every field marked [PLACEHOLDER] with Jessica's real work.
  * Do not add investment or trading product work here.
+ *
+ * Cover art for 桔子星球漫游日记 (felt-texture orange IP + flower) is still a
+ * PlaceholderFigure. When the Figma case hero is exported, drop it at
+ * `public/cases/orange-planet-diary/cover.jpg` (or `.png` / `.webp`).
  */
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "copilot-trust",
+    slug: "orange-planet-diary",
     number: "01",
-    title: "Designing trust into an AI copilot",
-    dek: "How people decide when to lean on a model, when to override it, and how the interface should make that choice feel obvious.",
+    title: "桔子星球漫游日记",
+    dek: "把冷冰冰的效能数据，做成一场可上滑的「小桔」星际漫游。",
     year: "2025",
-    role: "Lead experience designer",
-    client: "[PLACEHOLDER] Client or product name",
-    duration: "[PLACEHOLDER] 6 months",
-    tags: ["AI-native", "Trust", "Copilot"],
+    role: "体验设计",
+    client: "企业年度总结 H5",
+    duration: "2025 年度",
+    featured: true,
+    tags: ["企业年度总结 H5"],
+    locale: "zh-Hans",
     overview:
-      "[PLACEHOLDER] One-line framing for the case. The body below is locked to 问题 / 过程 / 结果.",
+      "一场可上滑的星际漫游：用毡感 3D「小桔」IP，把年度效能数据做成同事愿意看、也愿意分享的航行日记。",
     narrative: {
       problem:
-        "[PLACEHOLDER] 问题 / Problem — Who was using the product, what they were trying to finish, and why the copilot felt either too silent or too pushy. Name the cost of getting it wrong.",
+        "年度总结容易变成指标堆砌：难读、难分享，也难让人感到被看见。",
       process:
-        "[PLACEHOLDER] 过程 / Process — Research, the questions you asked, and what you designed: suggestion cards, source traces, undo, and the language used when the model is uncertain. Call out what you chose not to automate.",
+        "分镜叙事 + 毡感 3D IP；按 D-Chat / Cooper / DHR / 招聘 / 闪报 / 研发工具链分页讲故事；数据位可配置。",
       result:
-        "[PLACEHOLDER] 结果 / Result — What changed for people after it shipped. Replace with qualitative notes and any metrics (review adoption, time-to-confident-submit). Add what you would do next.",
+        "完整上滑旅程：封面授权 → 入职航行 → 多产品数据页 → 幸运签分享卡，风格统一可落地。",
     },
-  },
-  {
-    slug: "generative-onboarding",
-    number: "02",
-    title: "Onboarding for a generative workspace",
-    dek: "First-week rituals that teach a new kind of tool without turning the product into a tutorial.",
-    year: "2025",
-    role: "Product design",
-    client: "[PLACEHOLDER] Client or product name",
-    duration: "[PLACEHOLDER] 4 months",
-    tags: ["Onboarding", "Generative UI", "Education"],
-    overview:
-      "[PLACEHOLDER] One-line framing for the case. The body below is locked to 问题 / 过程 / 结果.",
-    narrative: {
-      problem:
-        "[PLACEHOLDER] 问题 / Problem — People arriving with the wrong mental model, or treating generation as magic instead of a craft. Where week-one drop-off happened.",
-      process:
-        "[PLACEHOLDER] 过程 / Process — How you sequenced first actions, tested the first session, and designed starter jobs, a first-project scaffold, and recovery when generation misses.",
-      result:
-        "[PLACEHOLDER] 结果 / Result — Activation, return in week one, and the qualitative shift you heard. Be honest about what still felt like a tour.",
-    },
-  },
-  {
-    slug: "review-loops",
-    number: "03",
-    title: "Human review loops for automated systems",
-    dek: "A quieter interface for people who are accountable when the system is wrong.",
-    year: "2024",
-    role: "Experience design",
-    client: "[PLACEHOLDER] Client or product name",
-    duration: "[PLACEHOLDER] 5 months",
-    tags: ["Review", "Operations", "Accountability"],
-    overview:
-      "[PLACEHOLDER] One-line framing for the case. The body below is locked to 问题 / 过程 / 结果. Not a trading or investment product.",
-    narrative: {
-      problem:
-        "[PLACEHOLDER] 问题 / Problem — The review queue, the cost of a miss, and who is blamed when the model is wrong. People reviewing under time pressure with incomplete context.",
-      process:
-        "[PLACEHOLDER] 过程 / Process — Shadowing, artifact analysis, and the surfaces you designed: queue triage, evidence layout, exception paths, and sign-off language where disagreement is a first-class action.",
-      result:
-        "[PLACEHOLDER] 结果 / Result — Review time, error catch rate, and how reviewers talked about responsibility after the redesign. Note what still needs a human.",
+    figureCaptions: {
+      hero: "Cover art: felt-texture orange IP (小桔) + flower. Export the Figma case hero and drop it at public/cases/orange-planet-diary/cover.jpg.",
+      secondary:
+        "Journey still — 封面授权, a product data page, or the 幸运签分享卡. Same folder as the cover when assets are ready.",
     },
   },
 ];
 
 export function getCaseBySlug(slug: string): CaseStudy | undefined {
   return caseStudies.find((item) => item.slug === slug);
+}
+
+/** Selected work on `/` — featured cases first; falls back to the full index. */
+export function getFeaturedCases(): CaseStudy[] {
+  const featured = caseStudies.filter((study) => study.featured);
+  return featured.length > 0 ? featured : caseStudies;
 }
 
 export function getAdjacentCases(slug: string): {

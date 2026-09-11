@@ -38,7 +38,10 @@ export function CaseNarrative({ study }: CaseNarrativeProps) {
               <span className="text-muted"> / {section.en}</span>
             </h2>
           </div>
-          <p className="max-w-2xl text-lg leading-relaxed text-muted">
+          <p
+            lang={study.locale}
+            className="max-w-2xl text-lg leading-relaxed text-muted"
+          >
             {study.narrative[section.key]}
           </p>
         </section>

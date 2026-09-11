@@ -21,6 +21,7 @@ export function CaseCard({ study, featured = false }: CaseCardProps) {
             {study.year} · {study.role}
           </p>
           <h3
+            lang={study.locale}
             className={`font-serif tracking-tight text-ink group-hover:underline ${
               featured
                 ? "text-3xl leading-tight sm:text-4xl"
@@ -29,7 +30,10 @@ export function CaseCard({ study, featured = false }: CaseCardProps) {
           >
             {study.title}
           </h3>
-          <p className="max-w-2xl text-base leading-relaxed text-muted">
+          <p
+            lang={study.locale}
+            className="max-w-2xl text-base leading-relaxed text-muted"
+          >
             {study.dek}
           </p>
           <ul className="flex flex-wrap gap-2 pt-1" aria-label="Topics">
