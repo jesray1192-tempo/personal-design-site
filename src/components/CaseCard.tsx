@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { CaseStudy } from "@/data/cases";
 
@@ -11,7 +12,11 @@ export function CaseCard({ study, featured = false }: CaseCardProps) {
     <article className="border-t border-rule py-8 first:border-t-0 first:pt-0">
       <Link
         href={`/work/${study.slug}`}
-        className="group grid gap-5 no-underline sm:grid-cols-[5rem_minmax(0,1fr)_auto] sm:items-baseline"
+        className={`group grid gap-5 no-underline ${
+          study.cover
+            ? "sm:grid-cols-[5rem_minmax(0,1fr)_5.5rem_auto] sm:items-start"
+            : "sm:grid-cols-[5rem_minmax(0,1fr)_auto] sm:items-baseline"
+        }`}
       >
         <p className="font-serif text-sm tracking-[0.18em] text-muted">
           {study.number}
@@ -47,6 +52,18 @@ export function CaseCard({ study, featured = false }: CaseCardProps) {
             ))}
           </ul>
         </div>
+        {study.cover && study.coverSize ? (
+          <Image
+            src={study.cover}
+            alt=""
+            width={study.coverSize.width}
+            height={study.coverSize.height}
+            className={`h-auto w-[4.5rem] border border-rule sm:w-full ${
+              featured ? "sm:max-w-[5.5rem]" : ""
+            }`}
+            sizes="88px"
+          />
+        ) : null}
         <p className="text-sm tracking-wide text-ink uppercase">
           Read case
         </p>

@@ -28,6 +28,13 @@ export type CaseStudy = {
     figma?: string;
     live?: string;
   };
+  /** Public path to cover art, e.g. `/cases/orange-planet-diary/cover.webp`. */
+  cover?: string;
+  /** Intrinsic pixel size of `cover`, for next/image. */
+  coverSize?: {
+    width: number;
+    height: number;
+  };
   /** Captions for PlaceholderFigure slots until real images land. */
   figureCaptions?: {
     hero?: string;
@@ -40,9 +47,8 @@ export type CaseStudy = {
  * Each case must keep the 问题 / 过程 / 结果 narrative.
  * Do not add investment or trading product work here.
  *
- * Cover art for 桔子星球漫游日记 (felt-texture orange IP + flower) is still a
- * PlaceholderFigure. When the Figma case hero is exported, drop it at
- * `public/cases/orange-planet-diary/cover.jpg` (or `.png` / `.webp`).
+ * Cover art for 桔子星球漫游日记 lives at
+ * `public/cases/orange-planet-diary/cover.webp`.
  */
 export const caseStudies: CaseStudy[] = [
   {
@@ -67,8 +73,9 @@ export const caseStudies: CaseStudy[] = [
       result:
         "完整上滑旅程：封面授权 → 入职航行 → 多产品数据页 → 幸运签分享卡，风格统一可落地。",
     },
+    cover: "/cases/orange-planet-diary/cover.webp",
+    coverSize: { width: 750, height: 1624 },
     figureCaptions: {
-      hero: "Cover art: felt-texture orange IP (小桔) + flower. Export the Figma case hero and drop it at public/cases/orange-planet-diary/cover.jpg.",
       secondary:
         "Journey still — 封面授权, a product data page, or the 幸运签分享卡. Same folder as the cover when assets are ready.",
     },

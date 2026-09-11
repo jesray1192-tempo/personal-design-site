@@ -21,9 +21,8 @@ export default function WorkPage() {
           are deferred — this index stays a single list.
         </p>
         <PlaceholderBanner>
-          Image slots still use PlaceholderFigure. Cover art for
-          桔子星球漫游日记 can drop into public/cases/orange-planet-diary/ when
-          the Figma hero is exported. Do not add filters yet.
+          桔子星球漫游日记 uses the case cover on this index and the case page.
+          The secondary figure is still a placeholder. Do not add filters yet.
         </PlaceholderBanner>
       </header>
 
