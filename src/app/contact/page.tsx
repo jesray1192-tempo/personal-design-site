@@ -13,7 +13,7 @@ export default function ContactPage() {
   return (
     <main id="main-content" className="site-shell py-14 sm:py-20">
       <header className="max-w-3xl space-y-5">
-        <p className="text-sm tracking-[0.2em] text-accent uppercase">
+        <p className="text-sm tracking-[0.2em] text-muted uppercase">
           Contact
         </p>
         <h1 className="text-4xl leading-tight sm:text-6xl">

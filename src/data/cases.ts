@@ -1,7 +1,10 @@
-export type CaseSection = {
-  heading: string;
-  body: string;
-};
+export const CASE_NARRATIVE_SECTIONS = [
+  { key: "problem", zh: "问题", en: "Problem" },
+  { key: "process", zh: "过程", en: "Process" },
+  { key: "result", zh: "结果", en: "Result" },
+] as const;
+
+export type CaseNarrativeKey = (typeof CASE_NARRATIVE_SECTIONS)[number]["key"];
 
 export type CaseStudy = {
   slug: string;
@@ -15,13 +18,20 @@ export type CaseStudy = {
   duration: string;
   tags: string[];
   overview: string;
-  sections: CaseSection[];
+  /** Fixed case-study body: 问题 / 过程 / 结果. Do not add extra section keys. */
+  narrative: Record<CaseNarrativeKey, string>;
+  /** Optional. Leave empty until a Figma file or live URL exists. */
+  links?: {
+    figma?: string;
+    live?: string;
+  };
 };
 
 /**
  * Placeholder case studies for the editorial template.
- * Replace every field marked [PLACEHOLDER] — and the stories themselves —
- * with Jessica's real work. Do not add investment or trading product work here.
+ * Each case must keep the 问题 / 过程 / 结果 narrative.
+ * Replace every field marked [PLACEHOLDER] with Jessica's real work.
+ * Do not add investment or trading product work here.
  */
 export const caseStudies: CaseStudy[] = [
   {
@@ -35,25 +45,15 @@ export const caseStudies: CaseStudy[] = [
     duration: "[PLACEHOLDER] 6 months",
     tags: ["AI-native", "Trust", "Copilot"],
     overview:
-      "[PLACEHOLDER] Replace this overview with the real problem, the people you designed for, and the outcome. This case is a template only — a stand-in for a product story about making model assistance inspectable and reversible.",
-    sections: [
-      {
-        heading: "Context",
-        body: "[PLACEHOLDER] Who was using the product, what they were trying to finish, and why the existing copilot felt either too silent or too pushy. Include the constraints that mattered: model latency, review policy, or the team's appetite for risk.",
-      },
-      {
-        heading: "Approach",
-        body: "[PLACEHOLDER] Research methods, the questions you asked, and how you framed the design problem. Example: we mapped moments of doubt — when people paused, edited, or abandoned a suggestion — and designed around those pauses instead of around model confidence scores.",
-      },
-      {
-        heading: "What I designed",
-        body: "[PLACEHOLDER] The surfaces that shipped: suggestion cards, source traces, undo and fork patterns, empty states, and the language used when the model is uncertain. Call out what you chose not to automate.",
-      },
-      {
-        heading: "Outcome",
-        body: "[PLACEHOLDER] Qualitative and quantitative results. Example metrics to replace: adoption of review, time-to-confident-submit, support tickets about “why did it do that.” Add a short note on what you would do next.",
-      },
-    ],
+      "[PLACEHOLDER] One-line framing for the case. The body below is locked to 问题 / 过程 / 结果.",
+    narrative: {
+      problem:
+        "[PLACEHOLDER] 问题 / Problem — Who was using the product, what they were trying to finish, and why the copilot felt either too silent or too pushy. Name the cost of getting it wrong.",
+      process:
+        "[PLACEHOLDER] 过程 / Process — Research, the questions you asked, and what you designed: suggestion cards, source traces, undo, and the language used when the model is uncertain. Call out what you chose not to automate.",
+      result:
+        "[PLACEHOLDER] 结果 / Result — What changed for people after it shipped. Replace with qualitative notes and any metrics (review adoption, time-to-confident-submit). Add what you would do next.",
+    },
   },
   {
     slug: "generative-onboarding",
@@ -66,25 +66,15 @@ export const caseStudies: CaseStudy[] = [
     duration: "[PLACEHOLDER] 4 months",
     tags: ["Onboarding", "Generative UI", "Education"],
     overview:
-      "[PLACEHOLDER] Replace this with the real onboarding problem: people arriving with the wrong mental model, or treating generation as magic instead of a craft. This template is about teaching a workflow, not a feature list.",
-    sections: [
-      {
-        heading: "Context",
-        body: "[PLACEHOLDER] Who was new, what “done” looked like in week one, and where drop-off happened. Note any legal or safety copy that had to live next to the happy path.",
-      },
-      {
-        heading: "Approach",
-        body: "[PLACEHOLDER] How you sequenced first actions, what you borrowed from studio critique or writing workshops, and how you tested the first session with real people.",
-      },
-      {
-        heading: "What I designed",
-        body: "[PLACEHOLDER] Starter prompts that are actually jobs-to-be-done, a first-project scaffold, progress that is about craft rather than checklists, and recovery when generation misses.",
-      },
-      {
-        heading: "Outcome",
-        body: "[PLACEHOLDER] Activation, return in week one, and the qualitative shift you heard in interviews. Be honest about what still felt like a tour.",
-      },
-    ],
+      "[PLACEHOLDER] One-line framing for the case. The body below is locked to 问题 / 过程 / 结果.",
+    narrative: {
+      problem:
+        "[PLACEHOLDER] 问题 / Problem — People arriving with the wrong mental model, or treating generation as magic instead of a craft. Where week-one drop-off happened.",
+      process:
+        "[PLACEHOLDER] 过程 / Process — How you sequenced first actions, tested the first session, and designed starter jobs, a first-project scaffold, and recovery when generation misses.",
+      result:
+        "[PLACEHOLDER] 结果 / Result — Activation, return in week one, and the qualitative shift you heard. Be honest about what still felt like a tour.",
+    },
   },
   {
     slug: "review-loops",
@@ -97,25 +87,15 @@ export const caseStudies: CaseStudy[] = [
     duration: "[PLACEHOLDER] 5 months",
     tags: ["Review", "Operations", "Accountability"],
     overview:
-      "[PLACEHOLDER] Replace this with a real operations or research story: people reviewing model output under time pressure, with incomplete context, and with a name attached to the decision. Not a trading or investment product.",
-    sections: [
-      {
-        heading: "Context",
-        body: "[PLACEHOLDER] The review queue, the cost of a miss, and the tools people already used around the system. Include the political reality: who is blamed when the model is wrong.",
-      },
-      {
-        heading: "Approach",
-        body: "[PLACEHOLDER] Shadowing, artifact analysis, and how you separated “the model’s recommendation” from “the human’s decision” in the information architecture.",
-      },
-      {
-        heading: "What I designed",
-        body: "[PLACEHOLDER] Queue triage, evidence layout, exception paths, and the language of sign-off. Show how disagreement with the model is a first-class action, not a buried override.",
-      },
-      {
-        heading: "Outcome",
-        body: "[PLACEHOLDER] Review time, error catch rate, and how reviewers talked about responsibility after the redesign. Note what still needs a human who cannot be automated away.",
-      },
-    ],
+      "[PLACEHOLDER] One-line framing for the case. The body below is locked to 问题 / 过程 / 结果. Not a trading or investment product.",
+    narrative: {
+      problem:
+        "[PLACEHOLDER] 问题 / Problem — The review queue, the cost of a miss, and who is blamed when the model is wrong. People reviewing under time pressure with incomplete context.",
+      process:
+        "[PLACEHOLDER] 过程 / Process — Shadowing, artifact analysis, and the surfaces you designed: queue triage, evidence layout, exception paths, and sign-off language where disagreement is a first-class action.",
+      result:
+        "[PLACEHOLDER] 结果 / Result — Review time, error catch rate, and how reviewers talked about responsibility after the redesign. Note what still needs a human.",
+    },
   },
 ];
 

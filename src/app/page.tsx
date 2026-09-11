@@ -31,7 +31,7 @@ export default function HomePage() {
     <main id="main-content" className="site-shell py-14 sm:py-20">
       <section className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.8fr)] lg:items-end">
         <div className="space-y-6">
-          <p className="text-sm tracking-[0.2em] text-accent uppercase">
+          <p className="text-sm tracking-[0.2em] text-muted uppercase">
             {site.role}
           </p>
           <h1 className="max-w-3xl text-4xl leading-[1.08] sm:text-6xl">
@@ -88,7 +88,7 @@ export default function HomePage() {
         <ol className="mt-10 grid gap-8 md:grid-cols-3">
           {principles.map((principle, index) => (
             <li key={principle.title} className="space-y-3">
-              <p className="font-serif text-sm tracking-[0.18em] text-accent">
+              <p className="font-serif text-sm tracking-[0.18em] text-muted">
                 0{index + 1}
               </p>
               <h3 className="text-2xl leading-snug">{principle.title}</h3>

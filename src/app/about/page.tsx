@@ -20,7 +20,7 @@ export default function AboutPage() {
   return (
     <main id="main-content" className="site-shell py-14 sm:py-20">
       <header className="max-w-3xl space-y-5">
-        <p className="text-sm tracking-[0.2em] text-accent uppercase">About</p>
+        <p className="text-sm tracking-[0.2em] text-muted uppercase">About</p>
         <h1 className="text-4xl leading-tight sm:text-6xl">
           A designer for products that think with people.
         </h1>
@@ -62,11 +62,23 @@ export default function AboutPage() {
         </h2>
         <ul className="mt-6 max-w-2xl space-y-3 text-lg leading-relaxed text-muted">
           {focus.map((item) => (
-            <li key={item} className="border-l-2 border-accent pl-4">
+            <li key={item} className="border-l-2 border-rule pl-4">
               {item}
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="mt-16 border-t border-rule pt-12" aria-labelledby="how-heading">
+        <h2 id="how-heading" className="text-3xl">
+          <span lang="zh-Hans">工作方式</span>
+          <span className="text-muted"> / How I work</span>
+        </h2>
+        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
+          [PLACEHOLDER] How you work with product, research, and engineering.
+          Resume download is deferred — this page stays biography, focus, and
+          working style.
+        </p>
       </section>
 
       <section className="mt-16 grid gap-10 border-t border-rule pt-12 md:grid-cols-2">

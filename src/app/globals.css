@@ -1,17 +1,16 @@
 @import "tailwindcss";
 
+/* Neutral, flexible palette — brand color is not locked yet. */
 @theme inline {
   --font-sans: var(--font-source-sans), "Source Sans 3", ui-sans-serif, system-ui,
     sans-serif;
   --font-serif: var(--font-newsreader), "Newsreader", Georgia, "Times New Roman",
     serif;
-  --color-paper: #f3eee4;
-  --color-paper-deep: #ebe4d6;
-  --color-ink: #1c1914;
-  --color-muted: #5c564c;
-  --color-rule: #d3c8b6;
-  --color-accent: #9c3d24;
-  --color-accent-soft: #ead6c8;
+  --color-paper: #fafafa;
+  --color-paper-deep: #f4f4f5;
+  --color-ink: #18181b;
+  --color-muted: #52525b;
+  --color-rule: #e4e4e7;
 }
 
 @layer base {
@@ -41,7 +40,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-ink);
     outline-offset: 3px;
   }
 
@@ -52,7 +51,7 @@
   }
 
   a:hover {
-    color: var(--color-accent);
+    color: var(--color-ink);
   }
 
   h1,
@@ -96,19 +95,18 @@
 }
 
 .button-primary:hover {
-  background: var(--color-accent);
+  background: var(--color-muted);
   color: var(--color-paper);
 }
 
 .placeholder-field {
   background:
-    linear-gradient(135deg, rgb(156 61 36 / 0.08) 0%, transparent 42%),
     repeating-linear-gradient(
       -18deg,
       transparent,
       transparent 11px,
-      rgb(28 25 20 / 0.04) 11px,
-      rgb(28 25 20 / 0.04) 12px
+      rgb(24 24 27 / 0.04) 11px,
+      rgb(24 24 27 / 0.04) 12px
     ),
     var(--color-paper-deep);
   border: 1px solid var(--color-rule);

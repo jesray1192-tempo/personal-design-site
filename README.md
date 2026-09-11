@@ -19,11 +19,13 @@ The copy on every page is scaffolded and marked `[PLACEHOLDER]` so it can be rep
 | --- | --- |
 | `/` | Home — positioning, selected work, approach |
 | `/work` | Case study index |
-| `/work/[slug]` | Case study detail template |
+| `/work/[slug]` | Case study detail — fixed 问题 / 过程 / 结果 |
 | `/about` | Biography and focus |
 | `/contact` | Contact form and direct email |
 
-Placeholder cases live in `src/data/cases.ts`. Site name, email, and social links live in `src/data/site.ts`.
+Placeholder cases live in `src/data/cases.ts`. Every case uses a fixed narrative: **问题 / Problem**, **过程 / Process**, **结果 / Result** (`src/components/CaseNarrative.tsx`). Site name, email, and social links live in `src/data/site.ts`.
+
+Visual style is intentionally unlocked: type is editorial, color stays neutral zinc-like ink and paper so a brand palette can land later. Work filters, a resume download, and contact-form mail wiring are deferred.
 
 ## Local development
 
@@ -58,10 +60,11 @@ NEXT_PUBLIC_SITE_URL=https://your-domain.vercel.app
 ## Replace before launch
 
 1. `src/data/site.ts` — name is already set; replace email, location, social URLs, and `NEXT_PUBLIC_SITE_URL`.
-2. `src/data/cases.ts` — swap the three example cases for real projects. Keep the same shape (`slug`, `title`, `sections`, …).
+2. `src/data/cases.ts` — swap the three example cases for real projects. Keep `narrative.problem`, `narrative.process`, and `narrative.result`. Do not add extra section keys.
 3. Search the repo for `[PLACEHOLDER]` and replace remaining page copy, portraits, and figure captions.
-4. Wire `src/components/ContactForm.tsx` to Formspree, Resend, or another mail service. The form currently confirms locally only.
-5. Add real images under `public/` and point the placeholder figures at them.
+4. Contact form stays local-only for now. Wire `src/components/ContactForm.tsx` later if you want email delivery.
+5. Add real images under `public/` and optional Figma / live URLs on each case (`links.figma`, `links.live`).
+6. Later, not in this scaffold: work filters, resume download, a locked brand color system.
 
 Do not add investment, trading, or brokerage product surfaces here.
 

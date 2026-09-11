@@ -13,7 +13,7 @@ export function CaseCard({ study, featured = false }: CaseCardProps) {
         href={`/work/${study.slug}`}
         className="group grid gap-5 no-underline sm:grid-cols-[5rem_minmax(0,1fr)_auto] sm:items-baseline"
       >
-        <p className="font-serif text-sm tracking-[0.18em] text-accent">
+        <p className="font-serif text-sm tracking-[0.18em] text-muted">
           {study.number}
         </p>
         <div className="space-y-3">
@@ -21,7 +21,7 @@ export function CaseCard({ study, featured = false }: CaseCardProps) {
             {study.year} · {study.role}
           </p>
           <h3
-            className={`font-serif tracking-tight text-ink group-hover:text-accent ${
+            className={`font-serif tracking-tight text-ink group-hover:underline ${
               featured
                 ? "text-3xl leading-tight sm:text-4xl"
                 : "text-2xl leading-tight sm:text-3xl"
@@ -43,7 +43,7 @@ export function CaseCard({ study, featured = false }: CaseCardProps) {
             ))}
           </ul>
         </div>
-        <p className="text-sm tracking-wide text-ink uppercase group-hover:text-accent">
+        <p className="text-sm tracking-wide text-ink uppercase">
           Read case
         </p>
       </Link>

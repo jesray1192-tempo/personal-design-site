@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CaseLinks } from "@/components/CaseLinks";
+import { CaseNarrative } from "@/components/CaseNarrative";
 import { PlaceholderBanner } from "@/components/PlaceholderBanner";
 import { PlaceholderFigure } from "@/components/PlaceholderFigure";
 import {
@@ -54,7 +56,7 @@ export default async function CaseStudyPage({
       </p>
 
       <header className="mt-8 max-w-4xl space-y-6">
-        <p className="font-serif text-sm tracking-[0.2em] text-accent">
+        <p className="font-serif text-sm tracking-[0.2em] text-muted">
           {study.number} / {study.year}
         </p>
         <h1 className="text-4xl leading-[1.08] sm:text-6xl">{study.title}</h1>
@@ -62,8 +64,8 @@ export default async function CaseStudyPage({
           {study.dek}
         </p>
         <PlaceholderBanner>
-          This page is the case-study template. Replace copy, figures, and
-          metrics with the real project. Do not use it for investment-product
+          Case template is fixed to 问题 / 过程 / 结果. Replace copy and figures
+          with the real project. Do not use this page for investment-product
           work.
         </PlaceholderBanner>
       </header>
@@ -77,52 +79,48 @@ export default async function CaseStudyPage({
           <h2 className="text-2xl sm:text-3xl">Overview</h2>
           <p className="text-lg leading-relaxed text-muted">{study.overview}</p>
         </div>
-        <dl className="space-y-5 border-t border-rule pt-6 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
-          <div>
-            <dt className="text-sm tracking-[0.14em] text-muted uppercase">
-              Role
-            </dt>
-            <dd className="mt-1 font-serif text-xl">{study.role}</dd>
-          </div>
-          <div>
-            <dt className="text-sm tracking-[0.14em] text-muted uppercase">
-              Client
-            </dt>
-            <dd className="mt-1 font-serif text-xl">{study.client}</dd>
-          </div>
-          <div>
-            <dt className="text-sm tracking-[0.14em] text-muted uppercase">
-              Duration
-            </dt>
-            <dd className="mt-1 font-serif text-xl">{study.duration}</dd>
-          </div>
-          <div>
-            <dt className="text-sm tracking-[0.14em] text-muted uppercase">
-              Focus
-            </dt>
-            <dd className="mt-2 flex flex-wrap gap-2">
-              {study.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="border border-rule px-2 py-0.5 text-xs tracking-wide uppercase"
-                >
-                  {tag}
-                </span>
-              ))}
-            </dd>
-          </div>
-        </dl>
+        <div className="space-y-8 border-t border-rule pt-6 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
+          <dl className="space-y-5">
+            <div>
+              <dt className="text-sm tracking-[0.14em] text-muted uppercase">
+                Role
+              </dt>
+              <dd className="mt-1 font-serif text-xl">{study.role}</dd>
+            </div>
+            <div>
+              <dt className="text-sm tracking-[0.14em] text-muted uppercase">
+                Client
+              </dt>
+              <dd className="mt-1 font-serif text-xl">{study.client}</dd>
+            </div>
+            <div>
+              <dt className="text-sm tracking-[0.14em] text-muted uppercase">
+                Duration
+              </dt>
+              <dd className="mt-1 font-serif text-xl">{study.duration}</dd>
+            </div>
+            <div>
+              <dt className="text-sm tracking-[0.14em] text-muted uppercase">
+                Focus
+              </dt>
+              <dd className="mt-2 flex flex-wrap gap-2">
+                {study.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="border border-rule px-2 py-0.5 text-xs tracking-wide uppercase"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </dd>
+            </div>
+          </dl>
+          <CaseLinks figma={study.links?.figma} live={study.links?.live} />
+        </div>
       </section>
 
-      <div className="mt-16 space-y-14">
-        {study.sections.map((section) => (
-          <section key={section.heading} className="grid gap-4 md:grid-cols-[14rem_minmax(0,1fr)]">
-            <h2 className="text-2xl">{section.heading}</h2>
-            <p className="max-w-2xl text-lg leading-relaxed text-muted">
-              {section.body}
-            </p>
-          </section>
-        ))}
+      <div className="mt-16">
+        <CaseNarrative study={study} />
       </div>
 
       <div className="mt-16">
@@ -141,7 +139,7 @@ export default async function CaseStudyPage({
             <p className="text-sm tracking-wide text-muted uppercase">
               Previous
             </p>
-            <p className="mt-2 font-serif text-2xl group-hover:text-accent">
+            <p className="mt-2 font-serif text-2xl group-hover:text-ink">
               {previous.title}
             </p>
           </Link>
@@ -154,7 +152,7 @@ export default async function CaseStudyPage({
             className="group no-underline sm:text-right"
           >
             <p className="text-sm tracking-wide text-muted uppercase">Next</p>
-            <p className="mt-2 font-serif text-2xl group-hover:text-accent">
+            <p className="mt-2 font-serif text-2xl group-hover:text-ink">
               {next.title}
             </p>
           </Link>

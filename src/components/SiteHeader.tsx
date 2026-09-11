@@ -39,7 +39,7 @@ export function SiteHeader() {
                     aria-current={active ? "page" : undefined}
                     className={`tracking-wide uppercase ${
                       active
-                        ? "text-ink underline decoration-accent decoration-1 underline-offset-6"
+                        ? "text-ink underline decoration-ink decoration-1 underline-offset-6"
                         : "text-muted hover:text-ink"
                     }`}
                   >

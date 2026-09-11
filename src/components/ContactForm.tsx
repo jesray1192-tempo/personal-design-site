@@ -46,7 +46,7 @@ export function ContactForm() {
       <div className="grid gap-6 sm:grid-cols-2">
         <div className="space-y-2">
           <label htmlFor={nameId} className="text-sm font-medium">
-            Name <span className="text-accent">*</span>
+            Name <span className="text-muted">*</span>
           </label>
           <input
             id={nameId}
@@ -59,7 +59,7 @@ export function ContactForm() {
         </div>
         <div className="space-y-2">
           <label htmlFor={emailId} className="text-sm font-medium">
-            Email <span className="text-accent">*</span>
+            Email <span className="text-muted">*</span>
           </label>
           <input
             id={emailId}
@@ -85,7 +85,7 @@ export function ContactForm() {
       </div>
       <div className="space-y-2">
         <label htmlFor={messageId} className="text-sm font-medium">
-          Message <span className="text-accent">*</span>
+          Message <span className="text-muted">*</span>
         </label>
         <textarea
           id={messageId}
