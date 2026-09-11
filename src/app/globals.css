@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-source-sans), "Source Sans 3", ui-sans-serif, system-ui,
+    sans-serif;
+  --font-serif: var(--font-newsreader), "Newsreader", Georgia, "Times New Roman",
+    serif;
+  --color-paper: #f3eee4;
+  --color-paper-deep: #ebe4d6;
+  --color-ink: #1c1914;
+  --color-muted: #5c564c;
+  --color-rule: #d3c8b6;
+  --color-accent: #9c3d24;
+  --color-accent-soft: #ead6c8;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+  }
+
+  a:hover {
+    color: var(--color-accent);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 450;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@utility site-shell {
+  margin-inline: auto;
+  width: min(100% - 2rem, 68rem);
+}
+
+@utility field {
+  width: 100%;
+  border: 1px solid var(--color-rule);
+  background: var(--color-paper);
+  padding: 0.7rem 0.8rem;
+  color: var(--color-ink);
+}
+
+@utility button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.button-primary:hover {
+  background: var(--color-accent);
+  color: var(--color-paper);
+}
+
+.placeholder-field {
+  background:
+    linear-gradient(135deg, rgb(156 61 36 / 0.08) 0%, transparent 42%),
+    repeating-linear-gradient(
+      -18deg,
+      transparent,
+      transparent 11px,
+      rgb(28 25 20 / 0.04) 11px,
+      rgb(28 25 20 / 0.04) 12px
+    ),
+    var(--color-paper-deep);
+  border: 1px solid var(--color-rule);
+}
