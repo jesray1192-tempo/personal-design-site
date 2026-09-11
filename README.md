@@ -23,7 +23,7 @@ The copy on every page is scaffolded and marked `[PLACEHOLDER]` so it can be rep
 | `/about` | Biography and focus |
 | `/contact` | Contact form and direct email |
 
-Case studies live in `src/data/cases.ts`. The leading case is **桔子星球漫游日记** (`/work/orange-planet-diary`). Every case uses a fixed narrative: **问题 / Problem**, **过程 / Process**, **结果 / Result** (`src/components/CaseNarrative.tsx`). Site name, email, and social links live in `src/data/site.ts`. Cover art is still a placeholder — drop the Figma case-hero export at `public/cases/orange-planet-diary/` when ready.
+Case studies live in `src/data/cases.ts`. The leading case is **桔子星球漫游日记** (`/work/orange-planet-diary`). Every case uses a fixed narrative: **问题 / Problem**, **过程 / Process**, **结果 / Result** (`src/components/CaseNarrative.tsx`). Site name, email, and social links live in `src/data/site.ts`. Cover art for 桔子星球漫游日记 is at `public/cases/orange-planet-diary/cover.webp` and is wired on the case page and featured card.
 
 Visual style is intentionally unlocked: type is editorial, color stays neutral zinc-like ink and paper so a brand palette can land later. Work filters, a resume download, and contact-form mail wiring are deferred.
 

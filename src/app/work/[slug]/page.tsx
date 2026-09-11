@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CaseCover } from "@/components/CaseCover";
 import { CaseLinks } from "@/components/CaseLinks";
 import { CaseNarrative } from "@/components/CaseNarrative";
 import { PlaceholderBanner } from "@/components/PlaceholderBanner";
@@ -69,19 +70,29 @@ export default async function CaseStudyPage({
           {study.dek}
         </p>
         <PlaceholderBanner>
-          Case template is fixed to 问题 / 过程 / 结果. Copy is live; figures
-          stay placeholders until the Figma case hero lands. Do not use this
-          page for investment-product work.
+          Case template is fixed to 问题 / 过程 / 结果. Copy is live. The
+          secondary figure stays a placeholder until more stills land. Do not
+          use this page for investment-product work.
         </PlaceholderBanner>
       </header>
 
       <div className="mt-10">
-        <PlaceholderFigure
-          caption={
-            study.figureCaptions?.hero ??
-            "Hero image, product still, or research artifact for this case."
-          }
-        />
+        {study.cover && study.coverSize ? (
+          <CaseCover
+            src={study.cover}
+            alt={`${study.title}封面`}
+            width={study.coverSize.width}
+            height={study.coverSize.height}
+            preload
+          />
+        ) : (
+          <PlaceholderFigure
+            caption={
+              study.figureCaptions?.hero ??
+              "Hero image, product still, or research artifact for this case."
+            }
+          />
+        )}
       </div>
 
       <section className="mt-14 grid gap-10 border-t border-rule pt-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(16rem,0.7fr)]">
