@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CaseCover } from "@/components/CaseCover";
+import { CaseJourneyGallery } from "@/components/CaseJourneyGallery";
 import { CaseLinks } from "@/components/CaseLinks";
 import { CaseNarrative } from "@/components/CaseNarrative";
 import { PlaceholderBanner } from "@/components/PlaceholderBanner";
@@ -70,9 +71,8 @@ export default async function CaseStudyPage({
           {study.dek}
         </p>
         <PlaceholderBanner>
-          Case template is fixed to 问题 / 过程 / 结果. Copy is live. The
-          secondary figure stays a placeholder until more stills land. Do not
-          use this page for investment-product work.
+          Case template is fixed to 问题 / 过程 / 结果. Copy and journey
+          stills are live. Do not use this page for investment-product work.
         </PlaceholderBanner>
       </header>
 
@@ -147,13 +147,17 @@ export default async function CaseStudyPage({
       </div>
 
       <div className="mt-16">
-        <PlaceholderFigure
-          caption={
-            study.figureCaptions?.secondary ??
-            "Secondary artifact — journey, UI frame, or quote from research."
-          }
-          ratio="wide"
-        />
+        {study.journey && study.journey.length > 0 ? (
+          <CaseJourneyGallery frames={study.journey} locale={study.locale} />
+        ) : (
+          <PlaceholderFigure
+            caption={
+              study.figureCaptions?.secondary ??
+              "Secondary artifact — journey, UI frame, or quote from research."
+            }
+            ratio="wide"
+          />
+        )}
       </div>
 
       <nav

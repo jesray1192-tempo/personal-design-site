@@ -6,6 +6,15 @@ export const CASE_NARRATIVE_SECTIONS = [
 
 export type CaseNarrativeKey = (typeof CASE_NARRATIVE_SECTIONS)[number]["key"];
 
+/** One still in a case journey gallery. Tall H5 frames keep intrinsic size. */
+export type CaseJourneyFrame = {
+  src: string;
+  caption: string;
+  /** Intrinsic pixel size of `src`, for next/image. Defaults to 750×1624. */
+  width?: number;
+  height?: number;
+};
+
 export type CaseStudy = {
   slug: string;
   number: string;
@@ -35,6 +44,8 @@ export type CaseStudy = {
     width: number;
     height: number;
   };
+  /** Sequential journey stills after the narrative. Omit until assets exist. */
+  journey?: CaseJourneyFrame[];
   /** Captions for PlaceholderFigure slots until real images land. */
   figureCaptions?: {
     hero?: string;
@@ -47,8 +58,8 @@ export type CaseStudy = {
  * Each case must keep the 问题 / 过程 / 结果 narrative.
  * Do not add investment or trading product work here.
  *
- * Cover art for 桔子星球漫游日记 lives at
- * `public/cases/orange-planet-diary/cover.webp`.
+ * Cover and journey stills for 桔子星球漫游日记 live under
+ * `public/cases/orange-planet-diary/`.
  */
 export const caseStudies: CaseStudy[] = [
   {
@@ -75,10 +86,52 @@ export const caseStudies: CaseStudy[] = [
     },
     cover: "/cases/orange-planet-diary/cover.webp",
     coverSize: { width: 750, height: 1624 },
-    figureCaptions: {
-      secondary:
-        "Journey still — 封面授权, a product data page, or the 幸运签分享卡. Same folder as the cover when assets are ready.",
-    },
+    journey: [
+      {
+        src: "/cases/orange-planet-diary/cover-auth.webp",
+        caption: "封面授权",
+      },
+      {
+        src: "/cases/orange-planet-diary/onboard-voyage.webp",
+        caption: "入职航行",
+      },
+      {
+        src: "/cases/orange-planet-diary/product-dchat.webp",
+        caption: "D-Chat",
+      },
+      {
+        src: "/cases/orange-planet-diary/product-cooper.webp",
+        caption: "Cooper / 知识库",
+      },
+      {
+        src: "/cases/orange-planet-diary/product-dhr.webp",
+        caption: "DHR",
+      },
+      {
+        src: "/cases/orange-planet-diary/product-recruit.webp",
+        caption: "招聘",
+      },
+      {
+        src: "/cases/orange-planet-diary/product-welfare.webp",
+        caption: "食域 / 弹性福利",
+      },
+      {
+        src: "/cases/orange-planet-diary/product-devtools.webp",
+        caption: "OE / MAS / Git",
+      },
+      {
+        src: "/cases/orange-planet-diary/product-flash-report.webp",
+        caption: "小桔闪报",
+      },
+      {
+        src: "/cases/orange-planet-diary/lucky-draw-cta.webp",
+        caption: "抽取幸运签入口",
+      },
+      {
+        src: "/cases/orange-planet-diary/lucky-share.webp",
+        caption: "幸运签分享卡",
+      },
+    ],
   },
 ];
 

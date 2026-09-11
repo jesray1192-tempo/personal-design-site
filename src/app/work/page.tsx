@@ -22,7 +22,7 @@ export default function WorkPage() {
         </p>
         <PlaceholderBanner>
           桔子星球漫游日记 uses the case cover on this index and the case page.
-          The secondary figure is still a placeholder. Do not add filters yet.
+          Journey stills live on the case page. Do not add filters yet.
         </PlaceholderBanner>
       </header>
 
