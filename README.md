@@ -23,7 +23,7 @@ The copy on every page is scaffolded and marked `[PLACEHOLDER]` so it can be rep
 | `/about` | Biography and focus |
 | `/contact` | Contact form and direct email |
 
-Placeholder cases live in `src/data/cases.ts`. Every case uses a fixed narrative: **问题 / Problem**, **过程 / Process**, **结果 / Result** (`src/components/CaseNarrative.tsx`). Site name, email, and social links live in `src/data/site.ts`.
+Case studies live in `src/data/cases.ts`. The leading case is **桔子星球漫游日记** (`/work/orange-planet-diary`). Every case uses a fixed narrative: **问题 / Problem**, **过程 / Process**, **结果 / Result** (`src/components/CaseNarrative.tsx`). Site name, email, and social links live in `src/data/site.ts`. Cover art is still a placeholder — drop the Figma case-hero export at `public/cases/orange-planet-diary/` when ready.
 
 Visual style is intentionally unlocked: type is editorial, color stays neutral zinc-like ink and paper so a brand palette can land later. Work filters, a resume download, and contact-form mail wiring are deferred.
 
@@ -60,7 +60,7 @@ NEXT_PUBLIC_SITE_URL=https://your-domain.vercel.app
 ## Replace before launch
 
 1. `src/data/site.ts` — name is already set; replace email, location, social URLs, and `NEXT_PUBLIC_SITE_URL`.
-2. `src/data/cases.ts` — swap the three example cases for real projects. Keep `narrative.problem`, `narrative.process`, and `narrative.result`. Do not add extra section keys.
+2. `src/data/cases.ts` — leading case is 桔子星球漫游日记. Keep `narrative.problem`, `narrative.process`, and `narrative.result`. Do not add extra section keys. Add further cases behind it as they are ready.
 3. Search the repo for `[PLACEHOLDER]` and replace remaining page copy, portraits, and figure captions.
 4. Contact form stays local-only for now. Wire `src/components/ContactForm.tsx` later if you want email delivery.
 5. Add real images under `public/` and optional Figma / live URLs on each case (`links.figma`, `links.live`).

@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata({
   title: "Work",
   description:
-    "Selected case studies from Jessica Ray — experience design for AI-native products, onboarding, and human review.",
+    "Selected case studies from Jessica Ray — including 桔子星球漫游日记, an enterprise annual-recap H5.",
   path: "/work",
 });
 
@@ -17,13 +17,13 @@ export default function WorkPage() {
         <p className="text-sm tracking-[0.2em] text-muted uppercase">Work</p>
         <h1 className="text-4xl leading-tight sm:text-6xl">Selected cases</h1>
         <p className="text-lg leading-relaxed text-muted sm:text-xl">
-          Each case opens into a fixed template: 问题 / 过程 / 结果. Stories
-          below are scaffolded examples until the real work lands. Filters are
-          deferred — this index stays a single list.
+          Each case opens into a fixed template: 问题 / 过程 / 结果. Filters
+          are deferred — this index stays a single list.
         </p>
         <PlaceholderBanner>
-          Replace this index with Jessica&apos;s shipped case studies. Do not add
-          filters yet. Detail pages stay 问题 / 过程 / 结果.
+          Image slots still use PlaceholderFigure. Cover art for
+          桔子星球漫游日记 can drop into public/cases/orange-planet-diary/ when
+          the Figma hero is exported. Do not add filters yet.
         </PlaceholderBanner>
       </header>
 

@@ -59,25 +59,37 @@ export default async function CaseStudyPage({
         <p className="font-serif text-sm tracking-[0.2em] text-muted">
           {study.number} / {study.year}
         </p>
-        <h1 className="text-4xl leading-[1.08] sm:text-6xl">{study.title}</h1>
-        <p className="max-w-3xl text-lg leading-relaxed text-muted sm:text-xl">
+        <h1 lang={study.locale} className="text-4xl leading-[1.08] sm:text-6xl">
+          {study.title}
+        </h1>
+        <p
+          lang={study.locale}
+          className="max-w-3xl text-lg leading-relaxed text-muted sm:text-xl"
+        >
           {study.dek}
         </p>
         <PlaceholderBanner>
-          Case template is fixed to 问题 / 过程 / 结果. Replace copy and figures
-          with the real project. Do not use this page for investment-product
-          work.
+          Case template is fixed to 问题 / 过程 / 结果. Copy is live; figures
+          stay placeholders until the Figma case hero lands. Do not use this
+          page for investment-product work.
         </PlaceholderBanner>
       </header>
 
       <div className="mt-10">
-        <PlaceholderFigure caption="Hero image, product still, or research artifact for this case." />
+        <PlaceholderFigure
+          caption={
+            study.figureCaptions?.hero ??
+            "Hero image, product still, or research artifact for this case."
+          }
+        />
       </div>
 
       <section className="mt-14 grid gap-10 border-t border-rule pt-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(16rem,0.7fr)]">
         <div className="space-y-4">
           <h2 className="text-2xl sm:text-3xl">Overview</h2>
-          <p className="text-lg leading-relaxed text-muted">{study.overview}</p>
+          <p lang={study.locale} className="text-lg leading-relaxed text-muted">
+            {study.overview}
+          </p>
         </div>
         <div className="space-y-8 border-t border-rule pt-6 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
           <dl className="space-y-5">
@@ -125,7 +137,10 @@ export default async function CaseStudyPage({
 
       <div className="mt-16">
         <PlaceholderFigure
-          caption="Secondary artifact — journey, UI frame, or quote from research."
+          caption={
+            study.figureCaptions?.secondary ??
+            "Secondary artifact — journey, UI frame, or quote from research."
+          }
           ratio="wide"
         />
       </div>
@@ -139,7 +154,10 @@ export default async function CaseStudyPage({
             <p className="text-sm tracking-wide text-muted uppercase">
               Previous
             </p>
-            <p className="mt-2 font-serif text-2xl group-hover:text-ink">
+            <p
+              lang={previous.locale}
+              className="mt-2 font-serif text-2xl group-hover:text-ink"
+            >
               {previous.title}
             </p>
           </Link>
@@ -152,7 +170,10 @@ export default async function CaseStudyPage({
             className="group no-underline sm:text-right"
           >
             <p className="text-sm tracking-wide text-muted uppercase">Next</p>
-            <p className="mt-2 font-serif text-2xl group-hover:text-ink">
+            <p
+              lang={next.locale}
+              className="mt-2 font-serif text-2xl group-hover:text-ink"
+            >
               {next.title}
             </p>
           </Link>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CaseCard } from "@/components/CaseCard";
 import { PlaceholderBanner } from "@/components/PlaceholderBanner";
-import { caseStudies } from "@/data/cases";
+import { getFeaturedCases } from "@/data/cases";
 import { site } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -75,7 +75,7 @@ export default function HomePage() {
           </Link>
         </div>
         <div>
-          {caseStudies.map((study) => (
+          {getFeaturedCases().map((study) => (
             <CaseCard key={study.slug} study={study} featured />
           ))}
         </div>
