@@ -5,6 +5,7 @@ import { CaseCover } from "@/components/CaseCover";
 import { CaseJourneyGallery } from "@/components/CaseJourneyGallery";
 import { CaseLinks } from "@/components/CaseLinks";
 import { CaseNarrative } from "@/components/CaseNarrative";
+import { OrangePlanetShowreel } from "@/components/OrangePlanetShowreel";
 import { PlaceholderBanner } from "@/components/PlaceholderBanner";
 import { PlaceholderFigure } from "@/components/PlaceholderFigure";
 import { SmartWorkDesignDemo } from "@/components/SmartWorkDesignDemo";
@@ -51,6 +52,16 @@ export default async function CaseStudyPage({
   }
 
   const { previous, next } = getAdjacentCases(study.slug);
+
+  if (study.slug === "orange-planet-diary") {
+    return (
+      <OrangePlanetShowreel
+        study={study}
+        previous={previous}
+        next={next}
+      />
+    );
+  }
 
   return (
     <main id="main-content" className="site-shell py-14 sm:py-20">

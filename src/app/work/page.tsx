@@ -17,8 +17,9 @@ export default function WorkPage() {
         <p className="text-sm tracking-[0.2em] text-muted uppercase">Work</p>
         <h1 className="text-4xl leading-tight sm:text-6xl">Selected cases</h1>
         <p className="text-lg leading-relaxed text-muted sm:text-xl">
-          Each case opens into a fixed template: 问题 / 过程 / 结果. Filters
-          are deferred — this index stays a single list.
+          桔子星球漫游日记 opens as a vertical showreel. The other cases
+          keep a fixed template: 问题 / 过程 / 结果. Filters are deferred —
+          this index stays a single list.
         </p>
         <PlaceholderBanner>
           桔子星球漫游日记 has journey stills; SmartWork has a live code demo.

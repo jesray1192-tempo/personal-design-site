@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { CaseCard } from "@/components/CaseCard";
 import { PlaceholderBanner } from "@/components/PlaceholderBanner";
@@ -28,91 +29,107 @@ const principles = [
 
 export default function HomePage() {
   return (
-    <main id="main-content" className="site-shell py-14 sm:py-20">
-      <section className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.8fr)] lg:items-end">
-        <div className="space-y-6">
-          <p className="text-sm tracking-[0.2em] text-muted uppercase">
-            {site.role}
-          </p>
-          <h1 className="max-w-3xl text-4xl leading-[1.08] sm:text-6xl">
-            I design how people live with intelligent products.
-          </h1>
-          <p className="max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
-            {site.shortBio} This site is a portfolio of product and experience
-            work — not an investment platform.
-          </p>
+    <main id="main-content">
+      <section className="bg-white">
+        <div className="mx-auto flex w-full max-w-[1000px] justify-center px-6 pt-8 pb-2 sm:pt-12 sm:pb-4">
+          <Image
+            src="/home-hero.gif"
+            alt="举花小桔，举起一朵橙色毡感花朵"
+            width={750}
+            height={750}
+            unoptimized
+            preload
+            sizes="(min-width: 640px) 34rem, 100vw"
+            className="h-auto w-full max-w-[28rem] sm:max-w-[34rem]"
+          />
         </div>
-        <aside className="space-y-4 border-t border-rule pt-5 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
-          <p className="text-sm tracking-[0.16em] text-muted uppercase">
-            Currently
-          </p>
-          <p className="font-serif text-2xl leading-snug">
-            SmartWork Design Skill, D-Hub, and AgentHub — design rules, a
-            workplace hub, and an inspectable Agent platform.
-          </p>
-          <p className="text-sm text-muted">{site.location}</p>
-        </aside>
       </section>
-
-      <div className="mt-10">
-        <PlaceholderBanner>
-          Selected work lists 桔子星球, SmartWork, D-Hub, and AgentHub. Swap
-          remaining [PLACEHOLDER] copy for Jessica&apos;s voice. Do not add
-          investment work.
-        </PlaceholderBanner>
-      </div>
-
-      <section className="mt-20" aria-labelledby="selected-work-heading">
-        <div className="flex flex-col gap-4 border-b border-rule pb-6 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="text-sm tracking-[0.16em] text-muted uppercase">
-              Index
+      <div className="site-shell py-14 sm:py-20">
+        <section className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.8fr)] lg:items-end">
+          <div className="space-y-6">
+            <p className="text-sm tracking-[0.2em] text-muted uppercase">
+              {site.role}
             </p>
-            <h2 id="selected-work-heading" className="mt-2 text-3xl sm:text-4xl">
-              Selected work
-            </h2>
+            <h1 className="max-w-3xl text-4xl leading-[1.08] sm:text-6xl">
+              I design how people live with intelligent products.
+            </h1>
+            <p className="max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
+              {site.shortBio} This site is a portfolio of product and experience
+              work — not an investment platform.
+            </p>
           </div>
-          <Link href="/work" className="text-sm tracking-wide uppercase">
-            All cases
-          </Link>
-        </div>
-        <div>
-          {getFeaturedCases().map((study) => (
-            <CaseCard key={study.slug} study={study} featured />
-          ))}
-        </div>
-      </section>
+          <aside className="space-y-4 border-t border-rule pt-5 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
+            <p className="text-sm tracking-[0.16em] text-muted uppercase">
+              Currently
+            </p>
+            <p className="font-serif text-2xl leading-snug">
+              SmartWork Design Skill, D-Hub, and AgentHub — design rules, a
+              workplace hub, and an inspectable Agent platform.
+            </p>
+            <p className="text-sm text-muted">{site.location}</p>
+          </aside>
+        </section>
 
-      <section className="mt-16 border-t border-rule pt-16" aria-labelledby="approach-heading">
-        <h2 id="approach-heading" className="text-3xl sm:text-4xl">
-          How I approach AI-native work
-        </h2>
-        <ol className="mt-10 grid gap-8 md:grid-cols-3">
-          {principles.map((principle, index) => (
-            <li key={principle.title} className="space-y-3">
-              <p className="font-serif text-sm tracking-[0.18em] text-muted">
-                0{index + 1}
-              </p>
-              <h3 className="text-2xl leading-snug">{principle.title}</h3>
-              <p className="text-base leading-relaxed text-muted">
-                {principle.body}
-              </p>
-            </li>
-          ))}
-        </ol>
-      </section>
+        <div className="mt-10">
+          <PlaceholderBanner>
+            Selected work lists 桔子星球, SmartWork, D-Hub, and AgentHub. Swap
+            remaining [PLACEHOLDER] copy for Jessica&apos;s voice. Do not add
+            investment work.
+          </PlaceholderBanner>
+        </div>
 
-      <section className="mt-20 border-t border-rule pt-12">
-        <p className="font-serif text-3xl leading-snug sm:text-4xl">
-          If you are building something people will have to trust, I would like
-          to hear about it.
-        </p>
-        <p className="mt-6">
-          <Link href="/contact" className="button-primary no-underline">
-            Get in touch
-          </Link>
-        </p>
-      </section>
+        <section className="mt-20" aria-labelledby="selected-work-heading">
+          <div className="flex flex-col gap-4 border-b border-rule pb-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm tracking-[0.16em] text-muted uppercase">
+                Index
+              </p>
+              <h2 id="selected-work-heading" className="mt-2 text-3xl sm:text-4xl">
+                Selected work
+              </h2>
+            </div>
+            <Link href="/work" className="text-sm tracking-wide uppercase">
+              All cases
+            </Link>
+          </div>
+          <div>
+            {getFeaturedCases().map((study) => (
+              <CaseCard key={study.slug} study={study} featured />
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-16 border-t border-rule pt-16" aria-labelledby="approach-heading">
+          <h2 id="approach-heading" className="text-3xl sm:text-4xl">
+            How I approach AI-native work
+          </h2>
+          <ol className="mt-10 grid gap-8 md:grid-cols-3">
+            {principles.map((principle, index) => (
+              <li key={principle.title} className="space-y-3">
+                <p className="font-serif text-sm tracking-[0.18em] text-muted">
+                  0{index + 1}
+                </p>
+                <h3 className="text-2xl leading-snug">{principle.title}</h3>
+                <p className="text-base leading-relaxed text-muted">
+                  {principle.body}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="mt-20 border-t border-rule pt-12">
+          <p className="font-serif text-3xl leading-snug sm:text-4xl">
+            If you are building something people will have to trust, I would like
+            to hear about it.
+          </p>
+          <p className="mt-6">
+            <Link href="/contact" className="button-primary no-underline">
+              Get in touch
+            </Link>
+          </p>
+        </section>
+      </div>
     </main>
   );
 }

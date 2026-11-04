@@ -99,6 +99,21 @@
   color: var(--color-paper);
 }
 
+.showreel {
+  background-color: #ffffff;
+  color: #111111;
+  font-family: var(--font-source-sans), var(--font-noto-sc), "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC",
+    "WenQuanYi Micro Hei", sans-serif;
+}
+
+.showreel :is(h1, h2, h3, h4) {
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-wrap: wrap;
+}
+
 .placeholder-field {
   background:
     repeating-linear-gradient(
