@@ -60,6 +60,7 @@ export type CaseStudy = {
  *
  * Cover and journey stills for 桔子星球漫游日记 live under
  * `public/cases/orange-planet-diary/`.
+ * D-Hub and AgentHub copy is live; figures wait for stills.
  */
 export const caseStudies: CaseStudy[] = [
   {
@@ -132,6 +133,60 @@ export const caseStudies: CaseStudy[] = [
         caption: "幸运签分享卡",
       },
     ],
+  },
+  {
+    slug: "d-hub",
+    number: "02",
+    title: "D-Hub",
+    dek: "把分散的内部产品，收成一个能找、能进、能继续做事的工作台。",
+    year: "2025",
+    role: "体验设计",
+    client: "企业内部工作台",
+    duration: "2025",
+    featured: true,
+    tags: ["内部平台", "工作台"],
+    locale: "zh-Hans",
+    overview:
+      "D-Chat、Cooper、DHR、招聘和研发工具链各自为政时，同事先在入口里迷路。D-Hub 把这些产品收成一个工作台：先找到对的入口，再把人送进正在发生的任务。",
+    narrative: {
+      problem:
+        "要办一件事，往往先在十几个入口里切换。搜索、权限和「最近在做」互不相通，门户变成又一个需要记忆的地址。",
+      process:
+        "按「找得到 → 进得去 → 回得来」排信息架构；高频任务上台前，低频能力进目录；空态、权限失败和入口文案用同一套同事口吻。",
+      result:
+        "一条可落地的工作台骨架：产品目录、任务入口、最近使用，和现有 D- 家族对齐，而不是再做一个孤岛门户。",
+    },
+    figureCaptions: {
+      hero: "D-Hub 工作台首页 — 产品目录与最近任务。",
+      secondary: "从 Hub 进入 D-Chat / Cooper / DHR 的跳转路径。",
+    },
+  },
+  {
+    slug: "agenthub",
+    number: "03",
+    title: "AgentHub",
+    dek: "让人把任务交给 Agent，同时还能看见它做了什么、为什么、怎么改。",
+    year: "2025",
+    role: "体验设计",
+    client: "企业 Agent 平台",
+    duration: "2025",
+    featured: true,
+    tags: ["Agent 平台", "AI-native"],
+    locale: "zh-Hans",
+    overview:
+      "面向产品、设计、研发和运营的企业 Agent 平台：托管 Agent、会话与记忆、工具与技能、任务协作。设计重点不是「更像人」，而是让委派可检查、可打断、可复盘。",
+    narrative: {
+      problem:
+        "Agent 能跑，但不透明。人不知道它用了什么上下文、调用了什么工具、卡在哪；失败时只能重来。平台若只堆能力，会变成又一个黑盒控制台。",
+      process:
+        "把 Session / Event / Memory、Tool / Skill、任务状态做成可阅读的界面；设计暂停、重试、回放和权限边界；让「委派」和「接手」一样容易。",
+      result:
+        "一条从目录到会话到回放的主路径：选择或创建 Agent → 看它怎么做 → 在出错时介入。模型和工具可以换，人始终知道自己把什么交给了系统。",
+    },
+    figureCaptions: {
+      hero: "AgentHub 会话 — 任务、工具调用与可打断的进行中状态。",
+      secondary: "回放 / Trace：一次 Agent 运行用了什么上下文和工具。",
+    },
   },
 ];
 

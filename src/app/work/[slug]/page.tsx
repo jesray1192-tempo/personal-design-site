@@ -71,8 +71,11 @@ export default async function CaseStudyPage({
           {study.dek}
         </p>
         <PlaceholderBanner>
-          Case template is fixed to 问题 / 过程 / 结果. Copy and journey
-          stills are live. Do not use this page for investment-product work.
+          Case template is fixed to 问题 / 过程 / 结果. Copy is live.
+          {study.journey && study.journey.length > 0
+            ? " Journey stills are live."
+            : " Figures stay placeholders until stills land."}{" "}
+          Do not use this page for investment-product work.
         </PlaceholderBanner>
       </header>
 

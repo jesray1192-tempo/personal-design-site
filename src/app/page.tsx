@@ -47,7 +47,8 @@ export default function HomePage() {
             Currently
           </p>
           <p className="font-serif text-2xl leading-snug">
-            [PLACEHOLDER] One sentence about what you are designing now.
+            D-Hub and AgentHub — a workplace hub and an inspectable Agent
+            platform.
           </p>
           <p className="text-sm text-muted">{site.location}</p>
         </aside>
@@ -55,8 +56,9 @@ export default function HomePage() {
 
       <div className="mt-10">
         <PlaceholderBanner>
-          Swap the headline, current-work line, and case studies for Jessica&apos;s
-          real voice and shipped work.
+          Selected work now includes D-Hub and AgentHub. Swap remaining
+          [PLACEHOLDER] copy for Jessica&apos;s voice. Do not add investment
+          work.
         </PlaceholderBanner>
       </div>
 
