@@ -7,6 +7,7 @@ import { CaseLinks } from "@/components/CaseLinks";
 import { CaseNarrative } from "@/components/CaseNarrative";
 import { PlaceholderBanner } from "@/components/PlaceholderBanner";
 import { PlaceholderFigure } from "@/components/PlaceholderFigure";
+import { SmartWorkDesignDemo } from "@/components/SmartWorkDesignDemo";
 import {
   caseStudies,
   getAdjacentCases,
@@ -70,17 +71,26 @@ export default async function CaseStudyPage({
         >
           {study.dek}
         </p>
-        <PlaceholderBanner>
-          Case template is fixed to 问题 / 过程 / 结果. Copy is live.
-          {study.journey && study.journey.length > 0
-            ? " Journey stills are live."
-            : " Figures stay placeholders until stills land."}{" "}
-          Do not use this page for investment-product work.
-        </PlaceholderBanner>
+        {study.slug === "smartwork-design-skill" && (
+          <Link href="/smartwork-design" className="inline-flex border border-ink bg-ink px-4 py-2 text-sm text-paper no-underline hover:text-paper">
+            打开交互展示页 ↗
+          </Link>
+        )}
+        {study.slug !== "smartwork-design-skill" && (
+          <PlaceholderBanner>
+            Case template is fixed to 问题 / 过程 / 结果. Copy is live.
+            {study.journey && study.journey.length > 0
+              ? " Journey stills are live."
+              : " Figures stay placeholders until stills land."}{" "}
+            Do not use this page for investment-product work.
+          </PlaceholderBanner>
+        )}
       </header>
 
       <div className="mt-10">
-        {study.cover && study.coverSize ? (
+        {study.slug === "smartwork-design-skill" ? (
+          <SmartWorkDesignDemo />
+        ) : study.cover && study.coverSize ? (
           <CaseCover
             src={study.cover}
             alt={`${study.title}封面`}
@@ -141,7 +151,9 @@ export default async function CaseStudyPage({
               </dd>
             </div>
           </dl>
-          <CaseLinks figma={study.links?.figma} live={study.links?.live} />
+          {study.slug !== "smartwork-design-skill" && (
+            <CaseLinks figma={study.links?.figma} live={study.links?.live} />
+          )}
         </div>
       </section>
 
@@ -150,7 +162,7 @@ export default async function CaseStudyPage({
       </div>
 
       <div className="mt-16">
-        {study.journey && study.journey.length > 0 ? (
+        {study.slug === "smartwork-design-skill" ? null : study.journey && study.journey.length > 0 ? (
           <CaseJourneyGallery frames={study.journey} locale={study.locale} />
         ) : (
           <PlaceholderFigure

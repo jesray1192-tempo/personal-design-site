@@ -1,0 +1,677 @@
+/* Smartwork Tag（对照 TDesign Tag；类名 sw-tag；徽标 Badge 见 smartwork_badge.css · sw-badge）
+   方形无边框标签 + 胶囊强调款
+   依赖：smartwork_color.css、smartwork_typography.css、smartwork_radius.css
+
+   分类（对照 TDesign「组件类型 / 组件状态 / 不同主题」· 见 DESIGN.md #design-tags）
+   ① 组件类型（默认 = 基础标签 · #design-tags-default）
+     1) 基础标签（默认）   中性 --surface · 命名色 · 语义浅底 · 可选 __icon
+     2) 可删除标签（非默认） .sw-tag--closable + .sw-tag__close
+     3) 可选选择标签（非默认） .sw-tag--checkable（.is-checked / aria-pressed="true"）
+   ①b 操作组合（#design-tags-ops）
+     纯文案 / 前置图标 = 基础；可删除 / 图标+可删除 = 非默认（须功能说明）
+   ② 组件状态
+     - 默认 / 悬浮（行抬色见下）/ 禁用（.is-disabled · --disabled · aria-disabled）
+     - 可删除：关闭钮自有 hover；失效可删：--disabled + --closable（壳淡化，关闭钮仍可点）
+   ③ 不同主题（variant × theme，对照 TDesign dark / light / outline / light-outline）
+     - light（默认浅底）   语义 --success 等 / 中性 --surface
+     - dark（强底）        --solid（+ 可选语义）
+     - outline（线框）     --outline（非默认；白底 elevated + 语义描边/字/图标；禁止灰框只染图标）
+     - light-outline       --light-outline（浅底 + 语义描边/字；非默认）
+     theme：default · primary · success · warning · danger(--error) · info(--processing) · secure
+
+   Borderless（稿图 Borderless Tags）：小圆角方形、浅语义底 + 深语义字，无外描边。
+   色阶仅用稿表 primary / success / warning / danger / info / secure / neutral，不新增 hex。
+
+   Pill 胶囊：中性灰、主色浅底、品牌实心（NEW / BETA）。
+
+   Usage（默认选型 · 见 DESIGN.md #design-tags-default / #design-tags-decision）
+   - 默认类型 = 基础标签：中性 --surface · 命名色 · 语义色 · 前置 __icon
+   - 选型：Q0–Q9 命中即停；渠道/分类→--surface；成败→语义色（勿先抢命名色）；默认不加 __icon
+   - 无状态含义优先：<span class="sw-tag sw-tag--surface">标签</span>
+   - --closable / --checkable / --outline / --light-outline / --solid / 胶囊
+     → 仅当 PRD、稿面、用户提示或功能说明明确要求
+   - 抬色强制（漏挂不合格）：
+     中性 Tag 在 hover 行 / primary 选中 / 灰底 → 父级 sw-hover-row | sw-selected-row | sw-on-gray → 底抬 neutral-3-5
+     品牌浅底 Tag（--primary / --primary-soft）在 primary-1 壳 → 父级 sw-selected-row | sw-on-primary → 底抬 primary-2（字仍 primary-8）
+   - 中性（无描边 · 默认）：<span class="sw-tag sw-tag--surface">内置</span>
+     静止底（白 / elevated）= --color-neutral-2
+     父级加下列之一 → 标签底改为 --color-neutral-3-5：
+       · sw-hover-row（行 hover）
+       · sw-selected-row（primary-1 / primary-bg 选中）
+       · sw-on-gray（灰底：bg-container 等）
+   - 主色浅底标签（--primary / --primary-soft）：静止 = primary-1
+     父级 sw-hover-row（行 hover）、sw-selected-row 或 sw-on-primary（品牌浅底壳）→ 标签底抬至 primary-2，避免融色
+   - 兼容：sw-tag--default / sw-tag--neutral → 同底
+   - 语义（默认有底色）：<span class="sw-tag sw-tag--borderless sw-tag--success">success</span>
+   - 前置图标：__icon 固定 14×14（--tag-icon-size）；SVG / sw-icon 按场景自选，非唯一 glyph
+   - 有底色+图标（默认优先）：<span class="sw-tag sw-tag--warning"><span class="sw-tag__icon" aria-hidden="true">…</span>警告</span>
+   - 线框白底（非默认 · 须明确要求）：<span class="sw-tag sw-tag--outline sw-tag--success">success</span>（语义染边/字/图标；≠ 灰框只染图标）
+   - 浅底描边（非默认）：<span class="sw-tag sw-tag--light-outline sw-tag--success">success</span>
+   - 强底色：<span class="sw-tag sw-tag--solid">本机</span>（默认可反色；可叠 --primary/--success…）
+   - 可选选择：<button type="button" class="sw-tag sw-tag--checkable" aria-pressed="false">标签</button>
+   - 禁用：.is-disabled / --disabled / aria-disabled="true"
+   - 胶囊：<span class="sw-tag sw-tag--pill sw-tag--brand sw-tag--uppercase">NEW</span>（统一 22px 高、12px 字号）
+*/
+
+.smartwork-scope {
+  --tag-radius-square: var(--radius-4);
+  --tag-radius-pill: 999px;
+  /* 平台 Tag 仅保留 22px 一个高度（独立于按钮尺寸） */
+  --tag-height: 22px;
+  --tag-padding-x: 6px;
+  --tag-padding-y: 0;
+  --tag-gap: var(--space-4);
+  --tag-font: var(--font-weight-regular) var(--font-size-12) / var(--line-height-18) var(--font-family-sans);
+  --tag-close-size: 12px;
+
+  /* 中性标签：白/elevated 静止 neutral-2；hover / primary 选中 / 灰底 → neutral-3-5（无描边） */
+  --tag-neutral-bg: var(--color-neutral-2);
+  --tag-neutral-text: var(--color-text-secondary);
+  --tag-neutral-bg-on-row-hover: var(--color-neutral-3-5);
+  --tag-neutral-bg-on-selected: var(--color-neutral-3-5);
+  --tag-neutral-bg-on-gray: var(--color-neutral-3-5);
+  --tag-default-bg: var(--tag-neutral-bg);
+  --tag-default-text: var(--tag-neutral-text);
+  --tag-surface-bg: var(--tag-neutral-bg);
+  --tag-surface-text: var(--tag-neutral-text);
+  --tag-muted-bg: var(--tag-neutral-bg);
+  --tag-muted-text: var(--tag-neutral-text);
+  --tag-primary-soft-bg: var(--color-primary-bg);
+  --tag-primary-soft-text: var(--color-primary-text-strong);
+  --tag-brand-bg: var(--color-primary-button);
+  --tag-brand-text: var(--color-on-primary-button);
+  /* *-1 浅底上 *-6 过亮难辨；方形徽章字统一用更深档（success → 9，其余 → 8） */
+  --tag-primary-bg: var(--color-primary-1);
+  --tag-primary-text: var(--color-primary-8);
+  /* 品牌浅底壳（primary-1 选中 / sw-on-primary）上抬一档，避免与壳同色；字色仍 primary-8 */
+  --tag-primary-bg-on-primary: var(--color-primary-2);
+  --tag-primary-soft-bg-on-primary: var(--color-primary-2);
+  --tag-success-text: var(--color-success-9);
+  --tag-warning-text: var(--color-warning-8);
+  --tag-danger-text: var(--color-danger-8);
+  --tag-info-text: var(--color-info-8);
+  --tag-secure-text: var(--color-secure-8);
+  /* 线框白底（图标+文案）；强底色实心（反色字） */
+  --tag-outline-bg: var(--color-bg-elevated);
+  --tag-outline-border: var(--color-neutral-4);
+  --tag-outline-text: var(--color-text);
+  --tag-outline-icon: var(--color-text-secondary);
+  --tag-solid-bg: var(--color-neutral-10);
+  --tag-solid-text: var(--color-text-inverse);
+  --tag-icon-size: 14px;
+}
+
+.smartwork-scope.dark-mode {
+  --tag-neutral-bg: var(--color-neutral-2);
+  --tag-neutral-text: var(--color-text-secondary);
+  --tag-neutral-bg-on-row-hover: var(--color-neutral-3-5);
+  --tag-neutral-bg-on-selected: var(--color-neutral-3-5);
+  --tag-neutral-bg-on-gray: var(--color-neutral-3-5);
+  --tag-default-bg: var(--tag-neutral-bg);
+  --tag-default-text: var(--tag-neutral-text);
+  --tag-surface-bg: var(--tag-neutral-bg);
+  --tag-surface-text: var(--tag-neutral-text);
+  --tag-muted-bg: var(--tag-neutral-bg);
+  --tag-muted-text: var(--tag-neutral-text);
+  --tag-primary-soft-bg: var(--color-primary-bg-secondary);
+  --tag-primary-soft-text: var(--color-primary-text-strong);
+  /* 暗黑：壳常为 primary-1/50，标签抬至 primary-2；字色不变 */
+  --tag-primary-bg-on-primary: var(--color-primary-2);
+  --tag-primary-soft-bg-on-primary: var(--color-primary-3);
+  /* 暗黑 success-9 为浅强调字色 */
+  --tag-success-text: var(--color-success-9);
+  --tag-outline-bg: var(--color-bg-elevated);
+  --tag-outline-border: var(--color-neutral-4);
+  --tag-outline-text: var(--color-text);
+  --tag-outline-icon: var(--color-text-secondary);
+  /* 暗黑强底：用浅反色面，避免与 dark elevated 同色 */
+  --tag-solid-bg: var(--color-neutral-10);
+  --tag-solid-text: var(--color-text-inverse);
+}
+
+.sw-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  max-width: 100%;
+  height: var(--tag-height);
+  min-height: var(--tag-height);
+  gap: var(--tag-gap);
+  padding: var(--tag-padding-y) var(--tag-padding-x);
+  border: 1px solid transparent;
+  border-radius: var(--tag-radius-square);
+  font: var(--tag-font);
+  color: inherit;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+/* 无边框浅底（稿图 Borderless） */
+.sw-tag--borderless {
+  border-color: transparent;
+}
+
+/* 中性：白/elevated 静止 --color-neutral-2（无描边）。--default / --surface / --neutral 同底。
+ * 场景限定 → neutral-3-5：
+ *   .sw-hover-row:hover | .sw-selected-row（primary-1）| .sw-on-gray（灰底 bg-container 等） */
+.sw-tag--default,
+.sw-tag--surface,
+.sw-tag--neutral,
+.sw-tag--muted-borderless {
+  background: var(--tag-neutral-bg);
+  color: var(--tag-neutral-text);
+}
+
+.sw-hover-row:hover .sw-tag--default,
+.sw-hover-row:focus-within .sw-tag--default,
+.sw-hover-row:has([aria-haspopup="menu"][data-state="open"]) .sw-tag--default,
+.sw-hover-row:hover .sw-tag--surface,
+.sw-hover-row:focus-within .sw-tag--surface,
+.sw-hover-row:has([aria-haspopup="menu"][data-state="open"]) .sw-tag--surface,
+.sw-hover-row:hover .sw-tag--neutral,
+.sw-hover-row:focus-within .sw-tag--neutral,
+.sw-hover-row:has([aria-haspopup="menu"][data-state="open"]) .sw-tag--neutral,
+.sw-hover-row:hover .sw-tag--muted,
+.sw-hover-row:focus-within .sw-tag--muted,
+.sw-hover-row:has([aria-haspopup="menu"][data-state="open"]) .sw-tag--muted,
+.sw-hover-row:hover .sw-tag--muted-borderless,
+.sw-hover-row:focus-within .sw-tag--muted-borderless,
+.sw-hover-row:has([aria-haspopup="menu"][data-state="open"]) .sw-tag--muted-borderless {
+  background: var(--tag-neutral-bg-on-row-hover);
+}
+
+.sw-dropdown-item:hover .sw-tag--default,
+.sw-dropdown-item[data-highlighted] .sw-tag--default,
+.sw-dropdown-item:hover .sw-tag--surface,
+.sw-dropdown-item[data-highlighted] .sw-tag--surface,
+.sw-dropdown-item:hover .sw-tag--neutral,
+.sw-dropdown-item[data-highlighted] .sw-tag--neutral,
+.sw-dropdown-item:hover .sw-tag--muted,
+.sw-dropdown-item[data-highlighted] .sw-tag--muted,
+.sw-dropdown-item:hover .sw-tag--muted-borderless,
+.sw-dropdown-item[data-highlighted] .sw-tag--muted-borderless {
+  background: var(--tag-neutral-bg-on-row-hover);
+}
+
+.sw-selected-row .sw-tag--default,
+.sw-selected-row .sw-tag--surface,
+.sw-selected-row .sw-tag--neutral,
+.sw-selected-row .sw-tag--muted,
+.sw-selected-row .sw-tag--muted-borderless {
+  background: var(--tag-neutral-bg-on-selected);
+}
+
+.sw-on-gray .sw-tag--default,
+.sw-on-gray .sw-tag--surface,
+.sw-on-gray .sw-tag--neutral,
+.sw-on-gray .sw-tag--muted,
+.sw-on-gray .sw-tag--muted-borderless {
+  background: var(--tag-neutral-bg-on-gray);
+}
+
+.sw-tag--primary,
+.sw-tag--primary-soft-borderless {
+  background: var(--tag-primary-bg);
+  color: var(--tag-primary-text);
+}
+
+.sw-hover-row:hover .sw-tag--primary,
+.sw-hover-row:focus-within .sw-tag--primary,
+.sw-hover-row:has([aria-haspopup="menu"][data-state="open"]) .sw-tag--primary,
+.sw-hover-row:hover .sw-tag--primary-soft-borderless,
+.sw-hover-row:focus-within .sw-tag--primary-soft-borderless,
+.sw-hover-row:has([aria-haspopup="menu"][data-state="open"]) .sw-tag--primary-soft-borderless {
+  background: var(--tag-primary-bg-on-primary);
+}
+
+.sw-dropdown-item:hover .sw-tag--primary,
+.sw-dropdown-item:focus .sw-tag--primary,
+.sw-dropdown-item[data-highlighted] .sw-tag--primary,
+.sw-dropdown-item:hover .sw-tag--primary-soft-borderless,
+.sw-dropdown-item:focus .sw-tag--primary-soft-borderless,
+.sw-dropdown-item[data-highlighted] .sw-tag--primary-soft-borderless {
+  background: var(--tag-primary-bg-on-primary);
+}
+
+.sw-dropdown-item:hover .sw-tag--primary-soft,
+.sw-dropdown-item:focus .sw-tag--primary-soft,
+.sw-dropdown-item[data-highlighted] .sw-tag--primary-soft {
+  background: var(--tag-primary-soft-bg-on-primary);
+}
+
+/* 品牌浅底壳上：主色标签抬 primary-2（同中性标在灰底抬 3-5） */
+.sw-selected-row .sw-tag--primary,
+.sw-selected-row .sw-tag--primary-soft-borderless,
+.sw-selected-row .sw-tag--purple,
+.sw-selected-row .sw-tag--magenta,
+.sw-on-primary .sw-tag--primary,
+.sw-on-primary .sw-tag--primary-soft-borderless,
+.sw-on-primary .sw-tag--purple,
+.sw-on-primary .sw-tag--magenta {
+  background: var(--tag-primary-bg-on-primary);
+}
+
+.sw-selected-row .sw-tag--primary-soft,
+.sw-on-primary .sw-tag--primary-soft {
+  background: var(--tag-primary-soft-bg-on-primary);
+}
+
+.sw-tag--success,
+.sw-tag--success-soft {
+  background: var(--color-success-1);
+  color: var(--tag-success-text);
+}
+
+.sw-tag--warning,
+.sw-tag--warning-soft {
+  background: var(--color-warning-1);
+  color: var(--tag-warning-text);
+}
+
+.sw-tag--danger,
+.sw-tag--danger-soft,
+.sw-tag--error {
+  background: var(--color-danger-1);
+  color: var(--tag-danger-text);
+}
+
+.sw-tag--info,
+.sw-tag--processing {
+  background: var(--color-info-1);
+  color: var(--tag-info-text);
+}
+
+/* 安全/信任辅助状态标（如「安全防护中」）；非主操作按钮 */
+.sw-tag--secure {
+  background: var(--color-secure-bg);
+  color: var(--tag-secure-text);
+}
+
+/* 稿图命名色 → 稿表语义（无独立色阶，仅别名） */
+.sw-tag--red,
+.sw-tag--volcano {
+  background: var(--color-danger-1);
+  color: var(--tag-danger-text);
+}
+
+.sw-tag--orange,
+.sw-tag--gold {
+  background: var(--color-warning-1);
+  color: var(--tag-warning-text);
+}
+
+.sw-tag--lime,
+.sw-tag--green {
+  background: var(--color-success-1);
+  color: var(--tag-success-text);
+}
+
+.sw-tag--cyan,
+.sw-tag--blue,
+.sw-tag--geekblue {
+  background: var(--color-info-1);
+  color: var(--tag-info-text);
+}
+
+.sw-tag--purple,
+.sw-tag--magenta {
+  background: var(--tag-primary-bg);
+  color: var(--tag-primary-text);
+}
+
+/* 可关闭 */
+.sw-tag--closable {
+  padding-inline-end: var(--space-4);
+}
+
+.sw-tag__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tag-close-size);
+  height: var(--tag-close-size);
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-4);
+  background: transparent;
+  color: inherit;
+  font: var(--font-weight-regular) var(--font-size-12) / 1 var(--font-family-sans);
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.65;
+  transition: opacity var(--motion-duration-fast, 140ms) var(--motion-easing-standard, ease);
+}
+
+.sw-tag__close:hover {
+  opacity: 1;
+}
+
+.sw-tag__close:focus-visible {
+  outline: 2px solid var(--color-primary-button);
+  outline-offset: 1px;
+  opacity: 1;
+}
+
+/* 胶囊强调（muted / primary-soft / brand；与稿图方形标签区分） */
+.sw-tag--pill,
+.sw-tag--muted,
+.sw-tag--primary-soft,
+.sw-tag--brand {
+  border-radius: var(--tag-radius-pill);
+  --tag-padding-x: 6px;
+  font: var(--font-weight-medium) var(--font-size-12) / var(--line-height-18) var(--font-family-sans);
+}
+
+.sw-tag--muted {
+  background: var(--tag-muted-bg);
+  color: var(--tag-muted-text);
+}
+
+.sw-tag--primary-soft {
+  background: var(--tag-primary-soft-bg);
+  color: var(--tag-primary-soft-text);
+}
+
+.sw-tag--brand {
+  background: var(--tag-brand-bg);
+  color: var(--tag-brand-text);
+  font-weight: var(--font-weight-semibold);
+}
+
+.sw-tag--uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  /* 胶囊强调文案仍用 12px，勿降到 11px overline */
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-18);
+}
+
+/* —— 前置图标（任意底色均可；默认继承字色） —— */
+.sw-tag__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: var(--tag-icon-size);
+  height: var(--tag-icon-size);
+  color: inherit;
+}
+
+.sw-tag__icon > svg,
+.sw-tag__icon .sw-icon {
+  display: block;
+  width: var(--tag-icon-size);
+  height: var(--tag-icon-size);
+  --icon-size: var(--tag-icon-size);
+}
+
+/* Tag 内的 loading 跟随当前 Tag 的语义文字色。 */
+.sw-tag .sw-icon[data-smartwork-icon="loader-circle"] {
+  color: inherit;
+}
+
+.sw-tag .sw-loading {
+  --loading-color: currentColor;
+  --loading-track: color-mix(in srgb, currentColor 28%, transparent);
+  --loading-text-color: currentColor;
+}
+
+/* —— 线框白底（对照 TDesign outline；非默认）
+ * 中性：elevated + neutral 边/字
+ * 语义：仍白底 elevated，边/字/图标同系色（禁止「灰框 + 黑字 + 只染图标」）
+ */
+.sw-tag--outline {
+  background: var(--tag-outline-bg);
+  color: var(--tag-outline-text);
+  border-color: var(--tag-outline-border);
+}
+
+.sw-tag--outline > .sw-tag__icon {
+  color: inherit;
+}
+
+.sw-tag--outline.sw-tag--success,
+.sw-tag--outline.sw-tag--green,
+.sw-tag--outline.sw-tag--lime {
+  background: var(--tag-outline-bg);
+  color: var(--tag-success-text);
+  border-color: var(--color-success-6);
+}
+
+.sw-tag--outline.sw-tag--warning,
+.sw-tag--outline.sw-tag--orange,
+.sw-tag--outline.sw-tag--gold {
+  background: var(--tag-outline-bg);
+  color: var(--tag-warning-text);
+  border-color: var(--color-warning-6);
+}
+
+.sw-tag--outline.sw-tag--error,
+.sw-tag--outline.sw-tag--danger,
+.sw-tag--outline.sw-tag--red,
+.sw-tag--outline.sw-tag--volcano {
+  background: var(--tag-outline-bg);
+  color: var(--tag-danger-text);
+  border-color: var(--color-danger-6);
+}
+
+.sw-tag--outline.sw-tag--info,
+.sw-tag--outline.sw-tag--processing,
+.sw-tag--outline.sw-tag--blue,
+.sw-tag--outline.sw-tag--cyan,
+.sw-tag--outline.sw-tag--geekblue {
+  background: var(--tag-outline-bg);
+  color: var(--tag-info-text);
+  border-color: var(--color-info-6);
+}
+
+.sw-tag--outline.sw-tag--primary,
+.sw-tag--outline.sw-tag--purple,
+.sw-tag--outline.sw-tag--magenta {
+  background: var(--tag-outline-bg);
+  color: var(--tag-primary-text);
+  border-color: var(--color-primary-6);
+}
+
+.sw-tag--outline.sw-tag--secure {
+  background: var(--tag-outline-bg);
+  color: var(--tag-secure-text);
+  border-color: var(--color-secure-6);
+}
+
+/* —— 强底色：实心反色字（如「本机」） —— */
+.sw-tag--solid {
+  background: var(--tag-solid-bg);
+  color: var(--tag-solid-text);
+  border-color: transparent;
+  font-weight: var(--font-weight-regular);
+}
+
+.sw-tag--solid.sw-tag--primary,
+.sw-tag--solid.sw-tag--brand {
+  background: var(--tag-brand-bg);
+  color: var(--tag-brand-text);
+}
+
+.sw-tag--solid.sw-tag--success,
+.sw-tag--solid.sw-tag--green,
+.sw-tag--solid.sw-tag--lime {
+  background: var(--color-success-6);
+  color: var(--color-on-primary-button);
+}
+
+.sw-tag--solid.sw-tag--warning,
+.sw-tag--solid.sw-tag--orange,
+.sw-tag--solid.sw-tag--gold {
+  /* warning-6 底偏亮，白字对比不足；字/图标统一 warning-1（浅 #fffbeb · 深 #2d1b0a） */
+  background: var(--color-warning-6);
+  color: var(--color-warning-1);
+}
+
+.sw-tag--solid.sw-tag--error,
+.sw-tag--solid.sw-tag--danger,
+.sw-tag--solid.sw-tag--red,
+.sw-tag--solid.sw-tag--volcano {
+  background: var(--color-danger-6);
+  color: var(--color-on-primary-button);
+}
+
+.sw-tag--solid.sw-tag--info,
+.sw-tag--solid.sw-tag--processing,
+.sw-tag--solid.sw-tag--blue,
+.sw-tag--solid.sw-tag--cyan,
+.sw-tag--solid.sw-tag--geekblue {
+  background: var(--color-info-6);
+  color: var(--color-on-primary-button);
+}
+
+.sw-tag--solid.sw-tag--secure {
+  background: var(--color-secure-6);
+  color: var(--color-on-primary-button);
+}
+
+.sw-tag--solid .sw-tag__icon {
+  color: inherit;
+}
+
+/* —— 浅底描边（对照 TDesign light-outline；非默认，须明确要求） ——
+ * 浅语义底 + 同系描边/字；中性用 neutral-2 底 + neutral-4 边 */
+.sw-tag--light-outline {
+  background: var(--tag-neutral-bg);
+  color: var(--tag-neutral-text);
+  border-color: var(--color-neutral-4);
+}
+
+.sw-tag--light-outline.sw-tag--primary,
+.sw-tag--light-outline.sw-tag--purple,
+.sw-tag--light-outline.sw-tag--magenta {
+  background: var(--tag-primary-bg);
+  color: var(--tag-primary-text);
+  border-color: var(--color-primary-6);
+}
+
+.sw-tag--light-outline.sw-tag--success,
+.sw-tag--light-outline.sw-tag--green,
+.sw-tag--light-outline.sw-tag--lime {
+  background: var(--color-success-1);
+  color: var(--tag-success-text);
+  border-color: var(--color-success-6);
+}
+
+.sw-tag--light-outline.sw-tag--warning,
+.sw-tag--light-outline.sw-tag--orange,
+.sw-tag--light-outline.sw-tag--gold {
+  background: var(--color-warning-1);
+  color: var(--tag-warning-text);
+  border-color: var(--color-warning-6);
+}
+
+.sw-tag--light-outline.sw-tag--error,
+.sw-tag--light-outline.sw-tag--danger,
+.sw-tag--light-outline.sw-tag--red,
+.sw-tag--light-outline.sw-tag--volcano {
+  background: var(--color-danger-1);
+  color: var(--tag-danger-text);
+  border-color: var(--color-danger-6);
+}
+
+.sw-tag--light-outline.sw-tag--info,
+.sw-tag--light-outline.sw-tag--processing,
+.sw-tag--light-outline.sw-tag--blue,
+.sw-tag--light-outline.sw-tag--cyan,
+.sw-tag--light-outline.sw-tag--geekblue {
+  background: var(--color-info-1);
+  color: var(--tag-info-text);
+  border-color: var(--color-info-6);
+}
+
+.sw-tag--light-outline.sw-tag--secure {
+  background: var(--color-secure-bg);
+  color: var(--tag-secure-text);
+  border-color: var(--color-secure-6);
+}
+
+.sw-tag--light-outline .sw-tag__icon {
+  color: inherit;
+}
+
+/* —— 可选选择标签（对照 TDesign checkable） —— */
+button.sw-tag--checkable {
+  appearance: none;
+  font: inherit;
+  margin: 0;
+  font-family: inherit;
+}
+
+.sw-tag--checkable {
+  cursor: pointer;
+  user-select: none;
+  background: var(--tag-neutral-bg);
+  color: var(--tag-neutral-text);
+  border-color: transparent;
+  transition:
+    background var(--motion-duration-fast, 140ms) var(--motion-easing-standard, ease),
+    color var(--motion-duration-fast, 140ms) var(--motion-easing-standard, ease);
+}
+
+.sw-tag--checkable:hover {
+  background: var(--tag-neutral-bg-on-row-hover);
+}
+
+.sw-tag--checkable.is-checked,
+.sw-tag--checkable[aria-pressed="true"],
+.sw-tag--checkable[aria-checked="true"] {
+  background: var(--color-primary-6);
+  color: var(--color-on-primary-button);
+}
+
+.sw-tag--checkable.is-checked:hover,
+.sw-tag--checkable[aria-pressed="true"]:hover,
+.sw-tag--checkable[aria-checked="true"]:hover {
+  background: var(--color-primary-7);
+  color: var(--color-on-primary-button);
+}
+
+.sw-tag--checkable:focus-visible {
+  outline: 2px solid var(--color-primary-button);
+  outline-offset: 1px;
+}
+
+/* —— 禁用态（对照 TDesign disabled） —— */
+.sw-tag.is-disabled,
+.sw-tag--disabled,
+.sw-tag[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* 失效可删除：壳淡化，关闭钮仍可点（对照 TDesign「标签失效态，失效可删除」） */
+.sw-tag--closable.is-disabled,
+.sw-tag--closable.sw-tag--disabled,
+.sw-tag--closable[aria-disabled="true"] {
+  pointer-events: none;
+}
+
+.sw-tag--closable.is-disabled .sw-tag__close,
+.sw-tag--closable.sw-tag--disabled .sw-tag__close,
+.sw-tag--closable[aria-disabled="true"] .sw-tag__close {
+  pointer-events: auto;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.sw-tag--closable.is-disabled .sw-tag__close:hover,
+.sw-tag--closable.sw-tag--disabled .sw-tag__close:hover,
+.sw-tag--closable[aria-disabled="true"] .sw-tag__close:hover {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sw-tag__close,
+  .sw-tag--checkable {
+    transition-duration: 0ms;
+  }
+}

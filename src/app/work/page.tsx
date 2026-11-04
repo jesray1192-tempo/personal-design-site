@@ -21,8 +21,8 @@ export default function WorkPage() {
           are deferred — this index stays a single list.
         </p>
         <PlaceholderBanner>
-          桔子星球漫游日记 has journey stills. SmartWork, D-Hub, and AgentHub
-          copy is live; figures wait for stills. Do not add filters yet.
+          桔子星球漫游日记 has journey stills; SmartWork has a live code demo.
+          D-Hub and AgentHub figures wait for stills. Do not add filters yet.
         </PlaceholderBanner>
       </header>
 

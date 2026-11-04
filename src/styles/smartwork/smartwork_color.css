@@ -1,0 +1,587 @@
+/* Smartwork 语义色 — 与其它 smartwork_*.css 共用主题根 `.smartwork-scope`，暗黑为 `.smartwork-scope.dark-mode` */
+
+.smartwork-scope {
+  /* Primary（浅色）：品牌主色，用于主要按钮、链接和关键操作 */
+  --color-primary-1: #f6f4ff; /* 浅背景 */
+  --color-primary-2: #edebfe; /* 次要背景 */
+  --color-primary-3: #ddd6fe; /* Hover 背景 */
+  --color-primary-4: #c4b5fd; /* 禁用状态 */
+  --color-primary-5: #a78bfa; /* 次要元素 */
+  --color-primary-6: #644bfc; /* 主色按钮 */
+  --color-primary-7: #745dfc; /* Hover 主色 */
+  --color-primary-8: #4c3bad; /* Active 主色 */
+  --color-primary-9: #3e2f89; /* 深色强调 */
+  --color-primary-10: #2f2366; /* 深色文本 */
+  --color-primary-50: var(--color-primary-1); /* 浅背景 */
+  --color-primary-100: var(--color-primary-2); /* 次要背景 */
+  --color-primary-200: var(--color-primary-3); /* Hover 背景 */
+  --color-primary-300: var(--color-primary-4); /* 禁用状态 */
+  --color-primary-400: var(--color-primary-5); /* 次要元素 */
+  --color-primary-500: var(--color-primary-6); /* 主色按钮 */
+  --color-primary-600: var(--color-primary-7); /* Hover 主色 */
+  --color-primary-700: var(--color-primary-8); /* Active 主色 */
+  --color-primary-800: var(--color-primary-9); /* 深色强调 */
+  --color-primary-900: var(--color-primary-10); /* 深色文本 */
+
+  /* Secondary -> Info：辅助视觉层次，用于次要操作和信息展示 */
+  --color-info-1: #f0fdff; /* 浅背景 */
+  --color-info-2: #e0fbff; /* 次要背景 */
+  --color-info-3: #b3f5ff; /* Hover 背景 */
+  --color-info-4: #80ebfe; /* 禁用状态 */
+  --color-info-5: #4dd4e8; /* 次要元素 */
+  --color-info-6: #06b6d4; /* 辅助色按钮 */
+  --color-info-7: #0891b2; /* Hover 辅助色 */
+  --color-info-8: #0e7490; /* Active 辅助色 */
+  --color-info-9: #155e75; /* 深色强调 */
+  --color-info-10: #0a3747; /* 深色文本 */
+  --color-info-50: var(--color-info-1); /* 浅背景 */
+  --color-info-100: var(--color-info-2); /* 次要背景 */
+  --color-info-200: var(--color-info-3); /* Hover 背景 */
+  --color-info-300: var(--color-info-4); /* 禁用状态 */
+  --color-info-400: var(--color-info-5); /* 次要元素 */
+  --color-info-500: var(--color-info-6); /* 辅助色按钮 */
+  --color-info-600: var(--color-info-7); /* Hover 辅助色 */
+  --color-info-700: var(--color-info-8); /* Active 辅助色 */
+  --color-info-800: var(--color-info-9); /* 深色强调 */
+  --color-info-900: var(--color-info-10); /* 深色文本 */
+
+  /* Secure：蓝紫辅助色（锚点 secure-6 #4578F6）
+   * 用于：安全/信任场景的辅助提示字、状态标、徽章与图标（如「防护中」、AI 安全沙箱）。
+   * 不用于：主操作按钮（须 primary）、主提示/标题/正文（须 --color-text*）、Alert/Banner info。
+   * ≠ 品牌紫 primary · ≠ 青系 info */
+  --color-secure-1: #eff4ff; /* 浅背景 */
+  --color-secure-2: #dbe6ff; /* 次要背景 */
+  --color-secure-3: #c2d4fe; /* Hover 背景 */
+  --color-secure-4: #9eb9fd; /* 禁用态装饰 */
+  --color-secure-5: #7196fa; /* 次要装饰 */
+  --color-secure-6: #4578f6; /* 安全态辅助强调（字/标/图标） */
+  --color-secure-7: #3265eb; /* Hover 辅助强调 */
+  --color-secure-8: #2854d6; /* Active 辅助强调 */
+  --color-secure-9: #2145b8; /* 深色强调 */
+  --color-secure-10: #1a3694; /* 深色辅助字 */
+  --color-secure-50: var(--color-secure-1); /* 浅背景 */
+  --color-secure-100: var(--color-secure-2); /* 次要背景 */
+  --color-secure-200: var(--color-secure-3); /* Hover 背景 */
+  --color-secure-300: var(--color-secure-4); /* 禁用态装饰 */
+  --color-secure-400: var(--color-secure-5); /* 次要装饰 */
+  --color-secure-500: var(--color-secure-6); /* 安全态辅助强调（字/标/图标） */
+  --color-secure-600: var(--color-secure-7); /* Hover 辅助色 */
+  --color-secure-700: var(--color-secure-8); /* Active 辅助色 */
+  --color-secure-800: var(--color-secure-9); /* 深色强调 */
+  --color-secure-900: var(--color-secure-10); /* 深色文本 */
+
+  /* Success：表示成功状态、确认操作和积极反馈 */
+  --color-success-1: #f0fdf5; /* 浅背景 */
+  --color-success-2: #dcfce8; /* 次要背景 */
+  --color-success-3: #bbf7d1; /* Hover 背景 */
+  --color-success-4: #86efac; /* 禁用状态 */
+  --color-success-5: #4ade80; /* 次要元素 */
+  --color-success-6: #2ba471; /* 成功按钮填充；勿作浅底标签字（对比不足，用 9） */
+  --color-success-7: #16a34a; /* Hover 成功（较 -6 加深，对齐 warning/danger 实心 hover 规律） */
+  --color-success-8: #15803d; /* Active 成功 */
+  --color-success-9: #166534; /* 深色成功 · 浅底标签/状态字 */
+  --color-success-10: #092b00; /* 成功文本（最深） */
+  --color-success-50: var(--color-success-1); /* 浅背景 */
+  --color-success-100: var(--color-success-2); /* 次要背景 */
+  --color-success-200: var(--color-success-3); /* Hover 背景 */
+  --color-success-300: var(--color-success-4); /* 禁用状态 */
+  --color-success-400: var(--color-success-5); /* 次要元素 */
+  --color-success-500: var(--color-success-6); /* 成功按钮 */
+  --color-success-600: var(--color-success-7); /* Hover 成功 */
+  --color-success-700: var(--color-success-8); /* Active 成功 */
+  --color-success-800: var(--color-success-9); /* 深色成功 */
+  --color-success-900: var(--color-success-10); /* 成功文本 */
+
+  /* Warning：提示用户注意，表示需要关注的信息 */
+  --color-warning-1: #fffbeb; /* 浅背景 */
+  --color-warning-2: #fef3c7; /* 次要背景 */
+  --color-warning-3: #fde68a; /* Hover 背景 */
+  --color-warning-4: #fcd34d; /* 禁用状态 */
+  --color-warning-5: #fbbf24; /* 次要元素 */
+  --color-warning-6: #f59e0b; /* 警告按钮 */
+  --color-warning-7: #d97706; /* Hover 警告 */
+  --color-warning-8: #b45309; /* Active 警告 */
+  --color-warning-9: #92400e; /* 深色警告 */
+  --color-warning-10: #78350f; /* 警告文本 */
+  --color-warning-50: var(--color-warning-1); /* 浅背景 */
+  --color-warning-100: var(--color-warning-2); /* 次要背景 */
+  --color-warning-200: var(--color-warning-3); /* Hover 背景 */
+  --color-warning-300: var(--color-warning-4); /* 禁用状态 */
+  --color-warning-400: var(--color-warning-5); /* 次要元素 */
+  --color-warning-500: var(--color-warning-6); /* 警告按钮 */
+  --color-warning-600: var(--color-warning-7); /* Hover 警告 */
+  --color-warning-700: var(--color-warning-8); /* Active 警告 */
+  --color-warning-800: var(--color-warning-9); /* 深色警告 */
+  --color-warning-900: var(--color-warning-10); /* 警告文本 */
+
+  /* Danger：表示错误、危险操作和删除动作 */
+  --color-danger-1: #fef2f2; /* 浅背景 */
+  --color-danger-2: #fee2e2; /* 次要背景 */
+  --color-danger-3: #fecaca; /* Hover 背景 */
+  --color-danger-4: #fca5a5; /* 禁用状态 */
+  --color-danger-5: #f87171; /* 次要元素 */
+  --color-danger-6: #ef4444; /* 危险按钮 */
+  --color-danger-7: #dc2626; /* Hover 危险 */
+  --color-danger-8: #b91c1c; /* Active 危险 */
+  --color-danger-9: #991b1b; /* 深色危险 */
+  --color-danger-10: #5c0011; /* 危险文本 */
+  --color-danger-50: var(--color-danger-1); /* 浅背景 */
+  --color-danger-100: var(--color-danger-2); /* 次要背景 */
+  --color-danger-200: var(--color-danger-3); /* Hover 背景 */
+  --color-danger-300: var(--color-danger-4); /* 禁用状态 */
+  --color-danger-400: var(--color-danger-5); /* 次要元素 */
+  --color-danger-500: var(--color-danger-6); /* 危险按钮 */
+  --color-danger-600: var(--color-danger-7); /* Hover 危险 */
+  --color-danger-700: var(--color-danger-8); /* Active 危险 */
+  --color-danger-800: var(--color-danger-9); /* 深色危险 */
+  --color-danger-900: var(--color-danger-10); /* 危险文本 */
+
+  /* Neutral：用于背景、边框、分割线等基础 UI 元素 */
+  /* 约定：
+   * - 白底 / 浅色凸起（与 neutral-2 不同面）上控件 hover → var(--color-neutral-2)（#f5f5f5）。
+   *   白色内容卡片 / elevated 卡片 hover 同样使用 neutral-2。
+   * - 与 neutral-2 同色面（卡片 / neutral-100 #f5f5f5）上控件 hover → var(--color-neutral-4)（#e6e6e6），勿用 neutral-2/3 以免与底对比不足或融色。
+   * 不单独设 hover 语义档，统一用色阶 2 / 3 / 4。
+   * 边框分工：非按钮外框 / 输入 / 卡片 / 浮层壳 → var(--color-neutral-4)（#E6E6E6）；
+   * 按钮描边 → var(--color-border)（#E0E0E0，略深于 neutral-4）；
+   * 分割线 → var(--color-border-secondary)（#F1F1F1），勿用 neutral-3 作分割线。 */
+  --color-neutral-1: #ffffff; /* 页面背景 */
+  --color-neutral-2: #f5f5f5; /* 嵌套 inset / 内嵌卡片底（≠ container）；elevated hover；填充钮禁用底 */
+  --color-neutral-3: #f0f0f0; /* 灰底 container 列表行 hover 等；≠ 中性标签底 */
+  --color-neutral-3-5: #EBEBEB; /* 灰底列表选中；中性标签对比底（hover·primary·灰底） */
+  --color-neutral-4: #e6e6e6; /* 非按钮外框；neutral-2 同色面上控件 hover */
+  --color-neutral-5: #d9d9d9; /* 占位符同档 */
+  --color-neutral-6: #bfbfbf; /* 禁用文本 */
+  --color-neutral-7: #8c8c8c; /* 辅助灰 / 说明性装饰文本 */
+  --color-neutral-8: #404040; /* 正文文本 */
+  --color-neutral-9: #262626; /* 标题文本 */
+  --color-neutral-10: #171717; /* 主标题 */
+  --color-neutral-50: var(--color-neutral-1); /* 页面背景 */
+  --color-neutral-100: var(--color-neutral-2); /* 嵌套 inset 底（≠ bg-container） */
+  --color-neutral-200: var(--color-neutral-3); /* 列表 hover 等（历史别名） */
+  --color-neutral-250: var(--color-neutral-3-5); /* 选中行 / 中性标签对比底（hover·primary·灰底） / 介于 hover 与边框 */
+  --color-neutral-300: var(--color-neutral-4); /* 非按钮外框档；neutral-2 同色面 hover */
+  --color-neutral-400: var(--color-neutral-5); /* 占位符 */
+  --color-neutral-500: var(--color-neutral-6); /* 禁用文本 */
+  --color-neutral-600: var(--color-neutral-7); /* 辅助灰 / 说明性装饰文本 */
+  --color-neutral-700: var(--color-neutral-8); /* 正文文本 */
+  --color-neutral-800: var(--color-neutral-9); /* 标题文本 */
+  --color-neutral-900: var(--color-neutral-10); /* 主标题 */
+
+  /* Text（浅色）— Text Color Token
+   * 稿表名 → CSS：text-primary → --color-text / --color-text-primary；text-secondary → --color-text-secondary；
+   * text-tertiary → --color-text-tertiary；text-disabled → --color-text-disabled。
+   *
+   * text-primary（#0F0F0F）
+   *   页面标题、分组标题、卡片标题、列表主标题、表单主值、关键操作名称。
+   * text-secondary（#404040）
+   *   次级但需快速识别：设置项标题、模块说明、辅助信息等。
+   *   与 primary 主层级区分时，设置项标题、模块说明、辅助信息等用 text-secondary。
+   * text-tertiary（#737373）
+   *   仅可跳读辅助：说明、备注、hint、placeholder、时间、非关键状态描述。
+   *   禁止用于：页面标题、卡片标题、分组标题、模块标题、导航标题及须用 primary 的主层级（分组标题须 primary，勿用 tertiary）。
+   * text-disabled（= neutral-6 / #BFBFBF）
+   *   仅不可点击、不可编辑、不可操作的禁用态文本；与 `--color-neutral-6` 同值，勿另写 hex。
+   *
+   * 判断原则：先判文本角色，再判视觉强弱。勿因字号小就自动用 text-tertiary。
+   * 主层级结构识别（含分组标题）→ text-primary；设置项与说明类 → text-secondary；可跳读辅助 → tertiary；无法判断时优先 text-secondary，勿默认 text-tertiary。
+   *
+   * 扩展：--color-text-quaternary 为极简占位/装饰（非稿表档，正文对比度不足 WCAG AA）；实心 hex，勿 rgba 叠底。
+   * --color-text / secondary / tertiary 在 --color-bg-page、--color-bg-container、--color-bg-elevated 最不利浅色底上，正文 ≥4.5:1（WCAG 2.1 AA）。 */
+  --color-text: #0f0f0f; /* text-primary #0F0F0F */
+  --color-text-secondary: #404040; /* text-secondary #404040 */
+  --color-text-tertiary: #737373; /* text-tertiary #737373 */
+  --color-text-quaternary: #a9a9a9; /* 扩展：最弱装饰/占位（tertiary→quaternary→disabled） */
+  --color-text-disabled: var(--color-neutral-6); /* text-disabled = neutral-6 */
+  --color-text-inverse: #ffffff; /* 反色底上的字 */
+  --color-link: var(--color-secure-accent); /* 链接（独立语义，平台蓝） */
+  --color-text-primary: var(--color-text); /* 同 text-primary */
+
+  /* Text × Neutral：实现里常以 Neutral 阶梯作字色时用下列别名，避免组件散落写 neutral-n；不重复 hex，随中性色主题一并变化。
+   * 常规可读层级仍以稿表 --color-text* 为主；下列用于必须与灰阶档对齐的场景（装饰说明、弱标签、表格次要列、中性强调标题等）。 */
+  /* 弱装饰文案：此前挂 neutral-600（#8c8c8c）在搜索占位、小图标等场景偏淡；与稿表 tertiary 对齐以保证可读 */
+  --color-text-neutral-muted: var(--color-text-tertiary);
+  --color-text-neutral-body: var(--color-neutral-700); /* 对齐 neutral-8 / 700 — 浅色下同 secondary 常为 #404040；暗黑下为浅灰正文档 */
+  --color-text-neutral-heading: var(--color-neutral-800); /* 对齐 neutral-9 / 800 — 中性阶梯「标题」档作字色 */
+  --color-text-neutral-display: var(--color-neutral-900); /* 对齐 neutral-10 / 900 — 中性阶梯「主标题」档作字色 */
+  /* 装饰序号等：第二名暖橙（非语义 Warning，仅供榜单强调） */
+  --color-decorative-rank-second: #f97316;
+
+  /*
+   * Decorative avatar：实体首字母方块（智能体列表/详情等）
+   * 组 1–6、组 3 品牌紫为 *-1/*-6；组 7 靛 secure-2/8、组 8 青绿 success-2/8；暗黑随语义阶覆盖。
+   */
+  --color-avatar-decorative-1-bg: var(--color-secure-1);
+  --color-avatar-decorative-1-fg: var(--color-secure-6);
+  --color-avatar-decorative-2-bg: var(--color-success-1);
+  --color-avatar-decorative-2-fg: var(--color-success-6);
+  --color-avatar-decorative-3-bg: var(--color-primary-1);
+  --color-avatar-decorative-3-fg: var(--color-primary-6);
+  --color-avatar-decorative-4-bg: var(--color-warning-1);
+  --color-avatar-decorative-4-fg: var(--color-warning-6);
+  --color-avatar-decorative-5-bg: var(--color-danger-1);
+  --color-avatar-decorative-5-fg: var(--color-danger-6);
+  --color-avatar-decorative-6-bg: var(--color-info-1);
+  --color-avatar-decorative-6-fg: var(--color-info-6);
+  --color-avatar-decorative-7-bg: var(--color-secure-2);
+  --color-avatar-decorative-7-fg: var(--color-secure-8);
+  --color-avatar-decorative-8-bg: var(--color-success-2);
+  --color-avatar-decorative-8-fg: var(--color-success-8);
+
+  /* Surface */
+  --color-bg-page: var(--color-neutral-1); /* 页面全局背景色 */
+  --color-bg-container: #fafafa; /* 内容区块 / 容器底色 */
+  --color-bg-elevated: #ffffff; /* 凸起卡片、弹窗、浮层 */
+  --color-bg-code-editor: var(--color-neutral-1); /* 代码编辑器画布：浅色纯白 */
+  --color-code-selection: #add6ff; /* 代码编辑器聚焦选区：平台蓝，避免与品牌操作态混淆 */
+  --color-code-selection-inactive: #e5ebf1; /* 代码编辑器失焦选区 */
+  --color-bg-hover: var(--color-neutral-2); /* elevated / 弹窗 / 浮层内控件 hover（客户端别名 --bg-hover） */
+  --bg-hover: var(--color-neutral-2);
+  /* 父级 hover 底已是 neutral-2 时，行内控件 hover 抬至 neutral-3-5（勿与壳同色；见 DESIGN.md §3.6） */
+  --color-bg-control-hover-on-n2: var(--color-neutral-3-5);
+  /* 灰底容器（--color-bg-container）上的列表行交互：hover neutral-3 · 选中 neutral-3-5（见 DESIGN.md §3.6） */
+  --color-bg-container-row-hover: var(--color-neutral-3);
+  --color-bg-container-row-selected: var(--color-neutral-3-5);
+  --color-bg-spotlight: rgba(0, 0, 0, 0.85); /* 焦点高亮、重点模块 */
+  --color-border: #e0e0e0; /* 仅按钮描边（深于 neutral-4）；非按钮外框用 --color-neutral-4 */
+  --color-border-secondary: #f1f1f1; /* 分割线（勿用 neutral-3；外框用 --color-neutral-4） */
+
+  /* Component-ish semantic aliases (match screenshot labels loosely) */
+  --color-primary-bg: var(--color-primary-50);
+  --color-primary-bg-secondary: var(--color-primary-100);
+  --color-primary-bg-hover: var(--color-primary-200);
+  --color-primary-border: var(--color-primary-300);
+  --color-primary-surface: var(--color-primary-400);
+  --color-primary-button: var(--color-primary-500);
+  --color-primary-hover: var(--color-primary-600);
+  --color-primary-active: var(--color-primary-700);
+  --color-primary-emphasis: var(--color-primary-800);
+  --color-primary-text-strong: var(--color-primary-900);
+  /* 主色实心控件上的字（填充按钮、品牌胶囊标签等）；浅暗模式均为白，勿用 --color-text-inverse */
+  --color-on-primary-button: #ffffff;
+
+  /* Secure 语义别名（辅助提示字/标；非主按钮、非主提示正文；锚点 secure-6 #4578F6） */
+  --color-secure-bg: var(--color-secure-50);
+  --color-secure-bg-secondary: var(--color-secure-100);
+  --color-secure-bg-hover: var(--color-secure-200);
+  --color-secure-border: var(--color-secure-300);
+  --color-secure-surface: var(--color-secure-400);
+  --color-secure-accent: var(--color-secure-500);
+  --color-secure-hover: var(--color-secure-600);
+  --color-secure-active: var(--color-secure-700);
+  --color-secure-emphasis: var(--color-secure-800);
+  --color-secure-text-strong: var(--color-secure-900);
+  --color-on-secure-accent: #ffffff;
+
+  /*
+   * AI 专属渐变（一等公民）
+   * 用于：AI 入口/徽章装饰、空态强调、模型切换点缀、生成态 shimmer 强调
+   * 不用于：整页背景、替代 primary 实心 CTA、大面积正文底
+   * 稿面气质 + 品牌锚点：#A554FF 0% → primary-6 (#644BFC) 72% → #4F63F9 100%
+   */
+  --color-ai-from: #a554ff; /* 紫罗兰 · 仅 AI 渐变 */
+  --color-ai-via: var(--color-primary-6); /* 品牌紫 · 靠品牌识别 */
+  --color-ai-to: #4f63f9; /* 亮蓝 · 仅 AI 渐变 */
+  --color-ai-rose: var(--color-ai-from); /* 兼容旧名 */
+  --color-ai-violet: var(--color-ai-from);
+  --color-ai-mid: var(--color-ai-via);
+  --gradient-ai: linear-gradient(
+    116deg,
+    var(--color-ai-from) 0%,
+    var(--color-ai-via) 72%,
+    var(--color-ai-to) 100%
+  );
+  --gradient-ai-soft: linear-gradient(
+    116deg,
+    color-mix(in srgb, var(--color-ai-from) 16%, transparent) 0%,
+    color-mix(in srgb, var(--color-ai-via) 14%, transparent) 72%,
+    color-mix(in srgb, var(--color-ai-to) 14%, transparent) 100%
+  );
+  --gradient-ai-strong: linear-gradient(
+    116deg,
+    var(--color-ai-from) 0%,
+    var(--color-ai-via) 60%,
+    var(--color-ai-to) 100%
+  );
+
+  /* 模型升级公告弹窗：参考图取色，上白、左下浅蓝、右下浅紫。 */
+  --color-model-upgrade-surface: #ffffff;
+  --color-model-upgrade-series-surface: #fdfefe;
+  --gradient-model-upgrade-surface:
+    radial-gradient(ellipse 95% 105% at 0% 100%, #dbefff 0%, transparent 82%),
+    radial-gradient(ellipse 84% 100% at 100% 100%, #ecefff 0%, transparent 80%),
+    linear-gradient(180deg, #ffffff 0%, #ffffff 30%, #fcfdff 62%, #f7faff 100%);
+
+  /* Context indicator track */
+  --color-context-success-track: var(--color-success-3);
+  --color-context-warning-track: var(--color-warning-3);
+  --color-context-info-track: var(--color-info-3);
+  --color-context-danger-track: var(--color-danger-3);
+  --color-context-secure-track: var(--color-secure-3);
+}
+
+.smartwork-scope.dark-mode {
+  /* Primary（暗黑）：品牌主色，用于主要按钮、链接和关键操作 */
+  --color-primary-1: #1c1534; /* 浅背景 */
+  --color-primary-2: #2a1f4d; /* 次要背景 */
+  --color-primary-3: #3b2b66; /* Hover 背景 */
+  --color-primary-4: #4c3b80; /* 禁用状态 */
+  --color-primary-5: #7c5fd9; /* 次要元素 */
+  --color-primary-6: #8b73ff; /* 主色按钮 */
+  --color-primary-7: #9f8aff; /* Hover 主色 */
+  --color-primary-8: #b3a1ff; /* Active 主色 */
+  --color-primary-9: #c7b8ff; /* 深色强调 */
+  --color-primary-10: #d8d0ff; /* 深色文本 */
+  --color-primary-50: var(--color-primary-1); /* 浅背景 */
+  --color-primary-100: var(--color-primary-2); /* 次要背景 */
+  --color-primary-200: var(--color-primary-3); /* Hover 背景 */
+  --color-primary-300: var(--color-primary-4); /* 禁用状态 */
+  --color-primary-400: var(--color-primary-5); /* 次要元素 */
+  --color-primary-500: var(--color-primary-6); /* 主色按钮 */
+  --color-primary-600: var(--color-primary-7); /* Hover 主色 */
+  --color-primary-700: var(--color-primary-8); /* Active 主色 */
+  --color-primary-800: var(--color-primary-9); /* 深色强调 */
+  --color-primary-900: var(--color-primary-10); /* 深色文本 */
+
+  /* Secondary -> Info：辅助视觉层次，用于次要操作和信息展示 */
+  --color-info-1: #0a2730; /* 浅背景 */
+  --color-info-2: #103742; /* 次要背景 */
+  --color-info-3: #164e5b; /* Hover 背景 */
+  --color-info-4: #1e6a7a; /* 禁用状态 */
+  --color-info-5: #22d3ee; /* 次要元素 */
+  --color-info-6: #67e8f9; /* 辅助色按钮 */
+  --color-info-7: #a5f3fc; /* Hover 辅助色 */
+  --color-info-8: #cffafe; /* Active 辅助色 */
+  --color-info-9: #f0fdff; /* 深色强调 */
+  --color-info-10: #e0fbff; /* 深色文本 */
+  --color-info-50: var(--color-info-1); /* 浅背景 */
+  --color-info-100: var(--color-info-2); /* 次要背景 */
+  --color-info-200: var(--color-info-3); /* Hover 背景 */
+  --color-info-300: var(--color-info-4); /* 禁用状态 */
+  --color-info-400: var(--color-info-5); /* 次要元素 */
+  --color-info-500: var(--color-info-6); /* 辅助色按钮 */
+  --color-info-600: var(--color-info-7); /* Hover 辅助色 */
+  --color-info-700: var(--color-info-8); /* Active 辅助色 */
+  --color-info-800: var(--color-info-9); /* 深色强调 */
+  --color-info-900: var(--color-info-10); /* 深色文本 */
+
+  /* Secure（暗黑）：规则同浅色 — 辅助提示字/标；非主按钮、非主提示正文 */
+  --color-secure-1: #0d1429; /* 浅背景 */
+  --color-secure-2: #121f3d; /* 次要背景 */
+  --color-secure-3: #172854; /* Hover 背景 */
+  --color-secure-4: #1e346e; /* 禁用态装饰 */
+  --color-secure-5: #4578f6; /* 次要装饰 */
+  --color-secure-6: #6290f8; /* 安全态辅助强调（字/标/图标） */
+  --color-secure-7: #84a8fb; /* Hover 辅助强调 */
+  --color-secure-8: #a8c2fd; /* Active 辅助强调 */
+  --color-secure-9: #cdd9fe; /* 深色强调 */
+  --color-secure-10: #eef3ff; /* 深色辅助字 */
+  --color-secure-50: var(--color-secure-1); /* 浅背景 */
+  --color-secure-100: var(--color-secure-2); /* 次要背景 */
+  --color-secure-200: var(--color-secure-3); /* Hover 背景 */
+  --color-secure-300: var(--color-secure-4); /* 禁用态装饰 */
+  --color-secure-400: var(--color-secure-5); /* 次要装饰 */
+  --color-secure-500: var(--color-secure-6); /* 安全态辅助强调（字/标/图标） */
+  --color-secure-600: var(--color-secure-7); /* Hover 辅助色 */
+  --color-secure-700: var(--color-secure-8); /* Active 辅助色 */
+  --color-secure-800: var(--color-secure-9); /* 深色强调 */
+  --color-secure-900: var(--color-secure-10); /* 深色文本 */
+
+  /* Success：1–4 深软底；5–8 按 Ant Design dark 色阶（历史 seed=#22c55e；浅色 success-6 已改为 #2ba471，深色阶暂未重算）；9–10 保持既有浅强调不改
+   * antd generate('#22c55e', {theme:'dark'}) → 5–8: #1d8744 / #20aa53 / #40be6a / #69d489
+   * （暗色阶 5→10 逐渐变亮；实心钮 6，hover/active 为 7/8） */
+  --color-success-1: #0a2417; /* 浅背景 */
+  --color-success-2: #0f3520; /* 次要背景 */
+  --color-success-3: #144b2a; /* Hover 背景 */
+  --color-success-4: #1a6334; /* 禁用状态 */
+  --color-success-5: #1d8744; /* 次要元素 */
+  --color-success-6: #20aa53; /* 成功按钮 */
+  --color-success-7: #40be6a; /* Hover 成功 */
+  --color-success-8: #69d489; /* Active 成功 */
+  --color-success-9: #86efac; /* 深色成功（保持） */
+  --color-success-10: #dcfce8; /* 成功文本（保持） */
+  --color-success-50: var(--color-success-1); /* 浅背景 */
+  --color-success-100: var(--color-success-2); /* 次要背景 */
+  --color-success-200: var(--color-success-3); /* Hover 背景 */
+  --color-success-300: var(--color-success-4); /* 禁用状态 */
+  --color-success-400: var(--color-success-5); /* 次要元素 */
+  --color-success-500: var(--color-success-6); /* 成功按钮 */
+  --color-success-600: var(--color-success-7); /* Hover 成功 */
+  --color-success-700: var(--color-success-8); /* Active 成功 */
+  --color-success-800: var(--color-success-9); /* 深色成功 */
+  --color-success-900: var(--color-success-10); /* 成功文本 */
+
+  /* Warning：提示用户注意，表示需要关注的信息 */
+  --color-warning-1: #2d1b0a; /* 浅背景 */
+  --color-warning-2: #3e2410; /* 次要背景 */
+  --color-warning-3: #52321a; /* Hover 背景 */
+  --color-warning-4: #6b4423; /* 禁用状态 */
+  --color-warning-5: #f59e0b; /* 次要元素 */
+  --color-warning-6: #fbbf24; /* 警告按钮 */
+  --color-warning-7: #fcd34d; /* Hover 警告 */
+  --color-warning-8: #fde68a; /* Active 警告 */
+  --color-warning-9: #fef3c7; /* 深色警告 */
+  --color-warning-10: #fffbeb; /* 警告文本 */
+  --color-warning-50: var(--color-warning-1); /* 浅背景 */
+  --color-warning-100: var(--color-warning-2); /* 次要背景 */
+  --color-warning-200: var(--color-warning-3); /* Hover 背景 */
+  --color-warning-300: var(--color-warning-4); /* 禁用状态 */
+  --color-warning-400: var(--color-warning-5); /* 次要元素 */
+  --color-warning-500: var(--color-warning-6); /* 警告按钮 */
+  --color-warning-600: var(--color-warning-7); /* Hover 警告 */
+  --color-warning-700: var(--color-warning-8); /* Active 警告 */
+  --color-warning-800: var(--color-warning-9); /* 深色警告 */
+  --color-warning-900: var(--color-warning-10); /* 警告文本 */
+
+  /* Danger：表示错误、危险操作和删除动作 */
+  --color-danger-1: #2d0a0a; /* 浅背景 */
+  --color-danger-2: #3e1010; /* 次要背景 */
+  --color-danger-3: #521a1a; /* Hover 背景 */
+  --color-danger-4: #791a1f; /* 禁用状态 */
+  --color-danger-5: #a61d24; /* 次要元素 */
+  --color-danger-6: #d54941; /* 危险按钮 / 菜单危险字（旧 #d32029 在 elevated 上偏闷） */
+  --color-danger-7: #e84749; /* Hover 危险 */
+  --color-danger-8: #f37370; /* Active 危险 */
+  --color-danger-9: #fee2e2; /* 深色危险 */
+  --color-danger-10: #fff2f0; /* 危险文本 */
+  --color-danger-50: var(--color-danger-1); /* 浅背景 */
+  --color-danger-100: var(--color-danger-2); /* 次要背景 */
+  --color-danger-200: var(--color-danger-3); /* Hover 背景 */
+  --color-danger-300: var(--color-danger-4); /* 禁用状态 */
+  --color-danger-400: var(--color-danger-5); /* 次要元素 */
+  --color-danger-500: var(--color-danger-6); /* 危险按钮 */
+  --color-danger-600: var(--color-danger-7); /* Hover 危险 */
+  --color-danger-700: var(--color-danger-8); /* Active 危险 */
+  --color-danger-800: var(--color-danger-9); /* 深色危险 */
+  --color-danger-900: var(--color-danger-10); /* 危险文本 */
+
+  /* Neutral：用于背景、边框、分割线等基础 UI 元素 */
+  /* 约定：
+   * - 页面 #0a0a0a / 容器 #121212 等深底上控件 hover → var(--color-neutral-2)（#333333）。
+   * - 凸起底 var(--color-bg-elevated)（#262626）上列表/控件 hover 同样用 neutral-2（#333333）。
+   * - 与 neutral-2 同色面（卡片 / inset #333333）上控件 hover → var(--color-neutral-4)（#4A4A4A），勿用 neutral-2/3 以免与底对比不足或融色。
+   * - 父 hover 底已是 n2 时嵌套控件 / 选中 / 标签抬色 → neutral-3-5（#404040）；步距对齐浅色 n2→3-5（约 10 档），旧 #383838 在 n2 上几乎看不见。
+   * 分割线用 var(--color-border-secondary)（#3a3a3a；须在 #262626 凸起底上可见），勿用 #2a2a2a / #505050。
+   * 边框分工（同浅色）：非按钮外框 → --color-neutral-4（#4A4A4A）；按钮描边 → --color-border（#545454，亮一档）。
+   * - 中性标签：白/elevated 静止用 neutral-2；hover / primary 选中 / 灰底对比用 neutral-3-5（#404040）；neutral-3 仍服务列表 hover 等（#303030）。
+   * 同浅色：不单独设 hover 语义档，统一用色阶 2 / 3 / 4。 */
+  --color-neutral-1: #0a0a0a; /* 页面背景 */
+  --color-neutral-2: #333333; /* 嵌套 inset 底（≠ container）；elevated hover；填充钮禁用底 */
+  --color-neutral-3: #303030; /* 灰底 container 列表行 hover 等；≠ 中性标签底 */
+  --color-neutral-3-5: #404040; /* 灰底列表选中；中性标签对比底；父 hover=n2 上嵌套控件 hover */
+  --color-neutral-4: #4a4a4a; /* 非按钮外框；neutral-2 同色面上 hover */
+  --color-neutral-5: #525252; /* 占位符同档 */
+  --color-neutral-6: #737373; /* 禁用文本 */
+  --color-neutral-7: #8c8c8c; /* 辅助灰 / 说明性装饰文本 */
+  --color-neutral-8: #d4d4d4; /* 正文文本 */
+  --color-neutral-9: #e5e5e5; /* 标题文本 */
+  --color-neutral-10: #fafafa; /* 主标题 */
+  --color-neutral-50: var(--color-neutral-1); /* 页面背景 */
+  --color-neutral-100: var(--color-neutral-2); /* 嵌套 inset 底（≠ bg-container） */
+  --color-neutral-200: var(--color-neutral-3); /* 列表 hover 等（历史别名） */
+  --color-neutral-250: var(--color-neutral-3-5); /* 选中行 / 中性标签对比底（hover·primary·灰底） / 介于 hover 与边框 */
+  --color-neutral-300: var(--color-neutral-4); /* 边框档；neutral-2 同色面 hover */
+  --color-neutral-400: var(--color-neutral-5); /* 占位符 */
+  --color-neutral-500: var(--color-neutral-6); /* 禁用文本 */
+  --color-neutral-600: var(--color-neutral-7); /* 辅助灰 / 说明性装饰文本 */
+  --color-neutral-700: var(--color-neutral-8); /* 正文文本 */
+  --color-neutral-800: var(--color-neutral-9); /* 标题文本 */
+  --color-neutral-900: var(--color-neutral-10); /* 主标题 */
+
+  /* Text（暗黑）— 角色与浅色 Text Color Token 一致；下列为实现暗黑对比度的语义等价色（非浅色 hex）。
+   * 用法规则同浅色段：主层级（含分组标题）→ primary；设置项标题、模块说明、辅助信息 → secondary；可跳读辅助 → tertiary；禁用态 → disabled。
+   * tertiary 用实心灰阶，避免半透明叠底导致对比随背景漂移。
+   * WCAG：--color-text / secondary / tertiary 在页面 #0a0a0a、容器 #121212、凸起 #262626 最不利组合上正文 ≥4.5:1。
+   * --color-text-quaternary 不满足正文 AA。Text×Neutral 别名定义于根 `.smartwork-scope`，暗黑下随 neutral 重映射。 */
+  --color-text: rgba(245, 245, 245, 1); /* text-primary（暗黑实现） */
+  --color-text-secondary: rgba(168, 168, 168, 1); /* text-secondary（暗黑实现 #A8A8A8，较 #BBBBBB 略暗以增强与 primary/tertiary 层级） */
+  --color-text-tertiary: #919191; /* text-tertiary（暗黑实现，凸起底上约 4.8:1） */
+  --color-text-quaternary: #757575; /* 扩展：最弱装饰/占位（tertiary→quaternary→disabled，实心勿 rgba） */
+  --color-text-disabled: var(--color-neutral-6); /* text-disabled = neutral-6（暗黑 #737373） */
+  --color-text-inverse: rgba(15, 15, 15, 1); /* 反色底上的字 */
+  --color-link: var(--color-secure-accent); /* 链接（独立语义，平台蓝） */
+  --color-text-primary: var(--color-text); /* 同 text-primary */
+  /* Text×Neutral 别名见浅色 `.smartwork-scope`，此处仅覆盖装饰色 */
+  --color-decorative-rank-second: #fb923c;
+
+  /* Decorative avatar：见浅色定义，随语义阶 dark-mode 自动覆盖 */
+  /* Surface（container 为区块底，neutral-2 为嵌套 Tab/卡片 inset 底，二者勿同色）
+   * 浅色：container #fafafa · neutral-2 #f5f5f5 · elevated #fff
+   * 暗黑：page #0a0a0a · container #121212 · neutral-2 #333333 · elevated #262626 · 分割线 #3a3a3a */
+  --color-bg-page: var(--color-neutral-1); /* 页面全局背景色 */
+  --color-bg-container: #121212; /* 内容区块 / 容器底色（稿表 #121212；嵌套 Tab/卡片用 neutral-2 inset） */
+  --color-bg-elevated: #262626; /* 凸起卡片、弹窗、浮层（暗黑下近于中性抬起底；中性标签对比底为 neutral-3-5） */
+  --color-bg-code-editor: rgb(0, 0, 0); /* 代码编辑器画布：暗色纯黑，减少灰雾感 */
+  --color-code-selection: #264f78; /* 代码编辑器聚焦选区：深色模式平台蓝 */
+  --color-code-selection-inactive: #3a3d41; /* 代码编辑器失焦选区 */
+  --color-bg-spotlight: rgba(255, 255, 255, 0.85); /* 焦点高亮、重点模块 */
+  --color-border: #545454; /* 仅按钮描边（亮于 neutral-4 #4A4A4A，对应浅色 #E0E0E0 深于 #E6E6E6） */
+  --color-border-secondary: #3a3a3a; /* 分割线（统一 token；#262626 上须亮于底，#2a2a2a 对比不足；弱于按钮/外框） */
+
+  /* Component-ish semantic aliases (match screenshot labels loosely) */
+  --color-primary-bg: var(--color-primary-50);
+  --color-primary-bg-secondary: var(--color-primary-100);
+  --color-primary-bg-hover: var(--color-primary-200);
+  --color-primary-border: var(--color-primary-300);
+  --color-primary-surface: var(--color-primary-400);
+  --color-primary-button: var(--color-primary-500);
+  --color-primary-hover: var(--color-primary-600);
+  --color-primary-active: var(--color-primary-700);
+  --color-primary-emphasis: var(--color-primary-800);
+  --color-primary-text-strong: var(--color-primary-900);
+
+  --color-secure-bg: var(--color-secure-50);
+  --color-secure-bg-secondary: var(--color-secure-100);
+  --color-secure-bg-hover: var(--color-secure-200);
+  --color-secure-border: var(--color-secure-300);
+  --color-secure-surface: var(--color-secure-400);
+  --color-secure-accent: var(--color-secure-500);
+  --color-secure-hover: var(--color-secure-600);
+  --color-secure-active: var(--color-secure-700);
+  --color-secure-emphasis: var(--color-secure-800);
+  --color-secure-text-strong: var(--color-secure-900);
+  --color-on-secure-accent: #ffffff;
+
+  /* AI 渐变：from/to 略提亮；via 随 primary-6 暗黑自动切换 */
+  --color-ai-from: #b87aff;
+  --color-ai-to: #6b7cfa;
+  --color-ai-rose: var(--color-ai-from);
+  --color-ai-violet: var(--color-ai-from);
+  --color-ai-mid: var(--color-ai-via);
+
+  --color-model-upgrade-surface: var(--color-bg-elevated);
+  --color-model-upgrade-series-surface: var(--color-bg-elevated);
+  --gradient-model-upgrade-surface:
+    radial-gradient(ellipse at 0% 100%, color-mix(in srgb, var(--color-primary-3) 50%, transparent), transparent 70%),
+    radial-gradient(ellipse at 100% 100%, color-mix(in srgb, var(--color-ai-to) 14%, transparent), transparent 70%);
+
+  /* Context indicator track */
+  --color-context-success-track: var(--color-success-3);
+  --color-context-warning-track: var(--color-warning-3);
+  --color-context-info-track: var(--color-info-3);
+  --color-context-danger-track: var(--color-danger-3);
+  --color-context-secure-track: var(--color-secure-3);
+
+  /* Button：暗黑模式下主色 / 危险「填充」按钮 disabled 文字白色不透明度 */
+  --btn-on-brand-disabled-alpha: 0.4;
+}
+
+/* AI 渐变工具类（依赖上方 --gradient-ai*） */
+.sw-gradient-ai {
+  background-image: var(--gradient-ai);
+}
+
+.sw-gradient-ai-soft {
+  background-image: var(--gradient-ai-soft);
+}
+
+.sw-gradient-ai-strong {
+  background-image: var(--gradient-ai-strong);
+}
+
+.sw-gradient-ai-text {
+  background-image: var(--gradient-ai);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

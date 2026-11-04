@@ -1,0 +1,26 @@
+/* Smartwork Motion — 时长 / 缓动 + 减弱动效
+   依赖：无（token 挂在 `.smartwork-scope`）
+   建议加载顺序：在 smartwork_typography.css 之后、smartwork_button.css 之前 */
+
+.smartwork-scope {
+  --motion-duration-instant: 0ms;
+  --motion-duration-fast: 140ms;
+  --motion-duration-base: 160ms;
+  --motion-duration-slow: 240ms;
+  --motion-easing-standard: ease;
+  --motion-easing-emphasized: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .smartwork-scope {
+    --motion-duration-fast: 0ms;
+    --motion-duration-base: 0ms;
+    --motion-duration-slow: 0ms;
+  }
+
+  .smartwork-scope .sw-btn__spinner {
+    animation: none !important;
+    border-right-color: currentColor;
+    opacity: 0.45;
+  }
+}

@@ -1,0 +1,65 @@
+/* Smartwork Border Radius System
+   Scale: 4px, 6px, 8px, 12px, 16px, 24px, 32px
+
+   语义参考（对应图片）
+   - 4px  : Sharp（偏硬朗）
+   - 6px  : Subtly rounded（轻微圆角）
+   - 8px  : Comfortably rounded（舒适圆角）
+   - 12px : Generously rounded（明显圆角）
+   - 16px : Very rounded（更圆润）
+   - 24px : Highly rounded（高度圆润）
+   - 32px : Maximum rounded（最大圆润）
+
+   主题作用域
+   - `--radius-*` 定义在 `.smartwork-scope` 上（与 smartwork_color.css 根节点一致）
+
+   Usage (tokens)
+   - border-radius: var(--radius-12);
+
+   Usage (utilities)
+   - <div class="sw-radius-12">...</div>
+*/
+
+.smartwork-scope {
+  --radius-4: 4px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-modal: var(--radius-16); /* 平台居中弹窗（Dialog / Modal） */
+  --radius-24: 24px;
+  --radius-32: 32px;
+}
+
+/* Utilities */
+.sw-radius-4 {
+  border-radius: var(--radius-4);
+}
+.sw-radius-6 {
+  border-radius: var(--radius-6);
+}
+.sw-radius-8 {
+  border-radius: var(--radius-8);
+}
+.sw-radius-12 {
+  border-radius: var(--radius-12);
+}
+.sw-radius-16 {
+  border-radius: var(--radius-16);
+}
+.sw-radius-24 {
+  border-radius: var(--radius-24);
+}
+.sw-radius-32 {
+  border-radius: var(--radius-32);
+}
+
+/* Corner helpers (optional) */
+.sw-radius-top-12 {
+  border-top-left-radius: var(--radius-12);
+  border-top-right-radius: var(--radius-12);
+}
+.sw-radius-bottom-12 {
+  border-bottom-left-radius: var(--radius-12);
+  border-bottom-right-radius: var(--radius-12);
+}

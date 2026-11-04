@@ -1,0 +1,43 @@
+.smartwork-showcase { border: 1px solid var(--color-rule); background: #fff; }
+.smartwork-showcase-intro { display: flex; gap: 2rem; justify-content: space-between; align-items: end; padding: clamp(1.5rem, 4vw, 3rem); }
+.smartwork-showcase-intro h2 { font-size: clamp(1.8rem, 3vw, 2.7rem); }
+.smartwork-showcase-intro p:last-child { max-width: 42rem; margin-top: .75rem; color: var(--color-muted); }
+.smartwork-showcase-eyebrow { font-size: .75rem; letter-spacing: .18em; text-transform: uppercase; color: var(--color-muted); }
+.smartwork-theme-switch { display: inline-flex; flex: none; padding: 3px; border: 1px solid var(--color-rule); background: var(--color-paper-deep); }
+.smartwork-theme-switch button { min-width: 4rem; padding: .4rem .65rem; font-size: .8rem; cursor: pointer; }
+.smartwork-theme-switch button[aria-pressed="true"] { background: white; box-shadow: 0 1px 3px #0002; }
+.smartwork-demo { color: var(--color-text); background: var(--color-bg-page); font-family: Arial, sans-serif; line-height: 1.5; }
+.smartwork-demo * { box-sizing: border-box; }
+.smartwork-demo-topbar { display: flex; gap: .75rem; align-items: center; min-height: 3.75rem; padding: .75rem 1.5rem; border-bottom: 1px solid var(--color-border-secondary); background: var(--color-bg-elevated); }
+.smartwork-demo-mark { display: grid; place-items: center; width: 1.75rem; height: 1.75rem; border-radius: .45rem; background: var(--color-primary-6); color: white; }
+.smartwork-demo-topbar-note { margin-left: auto; color: var(--color-text-tertiary); font-size: .75rem; }
+.smartwork-demo-grid { display: grid; grid-template-columns: 11.5rem minmax(0, 1fr); min-height: 26rem; }
+.smartwork-demo-sidebar { padding: 1.5rem .85rem; border-right: 1px solid var(--color-border-secondary); background: var(--color-bg-container); }
+.smartwork-demo-overline { font-size: .68rem; font-weight: 700; letter-spacing: .12em; color: var(--color-text-tertiary); }
+.smartwork-demo-nav-active, .smartwork-demo-nav-row { display: flex; gap: .75rem; align-items: center; min-height: 2.25rem; padding: .5rem .7rem; margin-top: .35rem; border-radius: .5rem; font-size: .82rem; }
+.smartwork-demo-nav-active { background: var(--color-primary-1); color: var(--color-primary-8); font-weight: 600; }
+.smartwork-demo-nav-row { color: var(--color-text-secondary); }
+.smartwork-demo-sidebar-bottom { margin-top: 2rem; }
+.smartwork-demo-main { padding: clamp(1.25rem, 4vw, 2.5rem); }
+.smartwork-demo-heading { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }
+.smartwork-demo-heading h3 { margin-top: .5rem; font-family: Arial, sans-serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 650; }
+.smartwork-demo-heading p:last-child { color: var(--color-text-secondary); font-size: .83rem; }
+.smartwork-demo-card { max-width: 34rem; margin-top: 2rem; padding: 1.5rem; border: 1px solid var(--color-neutral-4); border-radius: .75rem; background: var(--color-bg-elevated); }
+.smartwork-demo-card h4 { margin-top: 1rem; font-family: Arial, sans-serif; font-size: 1.2rem; font-weight: 650; }
+.smartwork-demo-card p { margin-top: .35rem; color: var(--color-text-secondary); font-size: .85rem; }
+.smartwork-demo-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.25rem; }
+.smartwork-demo-status-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.3rem; }
+.smartwork-demo-palette { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; border-top: 1px solid var(--color-border-secondary); background: var(--color-border-secondary); }
+.smartwork-demo-swatch { display: flex; flex-direction: column; gap: .25rem; min-width: 0; padding: 1rem; background: var(--color-bg-elevated); font-size: .78rem; }
+.smartwork-demo-swatch-color { width: 100%; height: 2.5rem; border-radius: .25rem; }
+.smartwork-demo-swatch code { overflow: hidden; color: var(--color-text-tertiary); font-size: .65rem; text-overflow: ellipsis; white-space: nowrap; }
+.smartwork-showcase-credit { padding: 1rem 1.5rem; color: var(--color-muted); font-size: .75rem; }
+@media (max-width: 700px) {
+  .smartwork-showcase-intro { display: block; }
+  .smartwork-theme-switch { margin-top: 1.25rem; }
+  .smartwork-demo-topbar-note, .smartwork-demo-sidebar { display: none; }
+  .smartwork-demo-grid { display: block; min-height: 0; }
+  .smartwork-demo-heading { display: block; }
+  .smartwork-demo-heading > .sw-tag { margin-top: .75rem; }
+  .smartwork-demo-palette { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

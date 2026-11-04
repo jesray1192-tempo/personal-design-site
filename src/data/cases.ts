@@ -138,7 +138,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "smartwork-design-skill",
     number: "02",
     title: "SmartWork Design Skill",
-    dek: "把设计决策、语义 Token 与组件状态写成可复用的代码规则。",
+    dek: "把对话、工具执行、人工确认与产物交付写进 AI 原生设计规则。",
     year: "2026",
     role: "设计系统 / 体验设计",
     client: "AI 工作台 · 设计系统",
@@ -147,18 +147,14 @@ export const caseStudies: CaseStudy[] = [
     tags: ["设计系统", "AI 工作台", "Design Token"],
     locale: "zh-Hans",
     overview:
-      "SmartWork Design Skill 把散落的设计决策收成可执行的规则：语义 Token、组件状态与命名约定写进 skill，人和模型按同一套语言改界面、查一致性。",
+      "SmartWork Design Skill 是一套面向 AI 编程助手和前端实现的代码化设计规则。它覆盖对话、工具执行、人工确认和产物协作等 AI 原生场景，从任务决策连接到布局、组件配方和明暗主题 Token。",
     narrative: {
       problem:
-        "设计决策散在 Figma 批注、口头约定和组件硬编码里。换色、补状态、做新页时，人和 AI 都无法可靠复用「为什么这样」。",
+        "AI 工作台的用户需要知道模型参考了什么、工具正在做什么、何时需要自己确认，以及结果在哪里。只给出颜色和组件，无法保证这些关键状态在不同页面上被一致地表达。",
       process:
-        "拆 primitive / semantic / component 三层 Token；把按钮等组件的 default / hover / disabled / loading 写成可引用规则；Skill 负责生成、校验和解释决策，而不是只吐视觉稿。",
+        "建立任务边界 → 场景 → 容器 → 版式 → 信息层级的决策顺序；为对话、工具、审批和产物选择对应的页面模式，再把语义颜色、组件状态与明暗主题写入 CSS Token 和可执行配方。",
       result:
-        "一套可复用的 Design Skill：token → 组件状态 → 代码规则。设计系统不再只是文档，而是 AI 工作台里能跑的约束。",
-    },
-    figureCaptions: {
-      hero: "SmartWork Design Skill — Token 层级与组件状态规则。",
-      secondary: "Skill 校验：硬编码色值 vs 语义 Token 引用。",
+        "形成可在代码中复用的设计能力包：同名 Token 支持明暗切换，按钮、标签等组件按状态与语义取值，前端与 AI 助手可依据同一套规则实现和校验界面。",
     },
   },
   {

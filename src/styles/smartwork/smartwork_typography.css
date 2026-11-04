@@ -1,0 +1,292 @@
+/* Smartwork Typography System
+   - 全端固定字阶（App 不随 768 抬升）；营销 Hero 见 smartwork_responsive.css
+
+   规范来源（对照合并）
+   1) Material「Typography Styles」角色名：Display / Headline / Title / Body / Mark / Link
+   2) Ant Design「字阶与行高」配对表（主字体 14/22）
+   3) SmartWork 例外：辅助小用 12/18（不用 Ant 的 12/20）；保留 11px overline
+
+   Canonical size / line-height（真值）
+   | Size | LH  | 来源 |
+   | 11   | 16  | SmartWork 保留 |
+   | 12   | 18  | 辅助小（覆盖 Ant 12/20）|
+   | 13   | 20  | code |
+   | 14   | 22  | Ant · bodyMedium / titleSmall / markMedium / linkMedium |
+   | 16   | 24  | Ant · bodyLarge / titleMedium / linkLarge / 辅助大 |
+   | 20   | 28  | Ant · titleLarge |
+   | 24   | 32  | Ant · headlineSmall · **App 页标题默认** |
+   | 28   | 36  | Material headlineMedium |
+   | 30   | 38  | Ant（可选大页头；非默认）|
+   | 36   | 44  | Material headlineLarge |
+   | 38   | 46  | Ant |
+   | 46   | 54  | Ant |
+   | 48   | 56  | Material displayMedium |
+   | 56   | 64  | Ant |
+   | 64   | 76  | Material displayLarge |
+   | 68   | 76  | Ant |
+
+   App 默认克制（3–5 档，不含展示型页）：12/18 · 14/22 · 16/24 · 20/28 · 24/32（页标题=24）；勿用 18 作标题
+   可选大页头 / 展示：30/38（--text-h1）或营销 Hero
+
+   Usage
+   - 根节点 `.smartwork-scope`；可选 `.smartwork-typography`
+   - 语义：`font: var(--text-body);`
+*/
+
+.smartwork-scope {
+  /* Font families（对齐 Ant / 系统 UI 栈） */
+  --font-family-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+
+  /* Font weights：Ant 以 400 / 500 为主，标题强调用 600 */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-conversation-prose: 430;
+
+  /*
+     Do
+     - 主字体 14/22（--text-body-app）
+     - 辅助小 12/18（--text-caption）；辅助大 16/24（--text-caption-lg）
+     - 标题 semibold(600)；≤14px 默认 regular（§4.3）
+     - overline 仅 11px 例外
+     Don't
+     - 可读辅助默认 11/10；App 正文 13px；无需求随手 medium/semibold
+  */
+
+  /* —— 原始字号阶 —— */
+  --font-size-11: 11px; /* SmartWork 保留 · overline */
+  --font-size-12: 12px; /* bodySmall / markSmall / linkSmall / 辅助小 */
+  --font-size-13: 13px; /* code only */
+  --font-size-14: 14px; /* bodyMedium / titleSmall / markMedium / linkMedium · 主字体 */
+  --font-size-15: 15px; /* 非主阶；极少用 */
+  --font-size-16: 16px; /* bodyLarge / titleMedium / linkLarge / 辅助大 */
+  --font-size-18: 18px; /* 遗留兼容；App 标题勿新用 */
+  --font-size-20: 20px; /* titleLarge */
+  --font-size-24: 24px; /* headlineSmall */
+  --font-size-28: 28px; /* headlineMedium */
+  --font-size-30: 30px; /* 可选大页头 / 展示强调（非默认页标题） */
+  --font-size-32: 32px; /* 营销中间档 / Hero */
+  --font-size-36: 36px; /* headlineLarge */
+  --font-size-38: 38px; /* Ant display */
+  --font-size-40: 40px; /* 营销 / Hero */
+  --font-size-46: 46px; /* Ant */
+  --font-size-48: 48px; /* displayMedium */
+  --font-size-56: 56px; /* Ant */
+  --font-size-64: 64px; /* displayLarge */
+  --font-size-68: 68px; /* Ant */
+
+  /* —— 行高（与上表配对） —— */
+  --line-height-16: 16px; /* 11 */
+  --line-height-18: 18px; /* 12 辅助小 */
+  --line-height-20: 20px; /* 13 code */
+  --line-height-21: 21px;
+  --line-height-22: 22px; /* 14 */
+  --line-height-24: 24px; /* 16 */
+  --line-height-26: 26px; /* 遗留 18 配对 */
+  --line-height-28: 28px; /* 20 */
+  --line-height-30: 30px;
+  --line-height-32: 32px; /* 24 */
+  --line-height-34: 34px;
+  --line-height-36: 36px; /* 28 */
+  --line-height-38: 38px; /* 30 */
+  --line-height-40: 40px;
+  --line-height-44: 44px; /* 36 */
+  --line-height-46: 46px; /* 38 */
+  --line-height-48: 48px;
+  --line-height-54: 54px; /* 46 */
+  --line-height-56: 56px; /* 48 */
+  --line-height-64: 64px; /* 56 */
+  --line-height-76: 76px; /* 64 / 68 */
+
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.01em;
+  --paragraph-spacing: 0.75em;
+  --font-feature-settings: "kern" 1, "liga" 1;
+
+  /* —— Display（Material display* + Ant 密展示） —— */
+  --text-display-lg: var(--font-weight-semibold) var(--font-size-64) / var(--line-height-76)
+    var(--font-family-sans); /* displayLarge */
+  --text-display-md: var(--font-weight-semibold) var(--font-size-48) / var(--line-height-56)
+    var(--font-family-sans); /* displayMedium */
+  --text-display: var(--font-weight-semibold) var(--font-size-38) / var(--line-height-46)
+    var(--font-family-sans); /* Ant 展示档（App/数据强调常用） */
+
+  /* —— Headline —— */
+  --text-headline-lg: var(--font-weight-semibold) var(--font-size-36) / var(--line-height-44)
+    var(--font-family-sans); /* headlineLarge */
+  --text-headline-md: var(--font-weight-semibold) var(--font-size-28) / var(--line-height-36)
+    var(--font-family-sans); /* headlineMedium */
+  /* 可选大页头 / 展示强调（Ant 30/38）；默认 App 页标题用 --text-h2 */
+  --text-h1: var(--font-weight-semibold) var(--font-size-30) / var(--line-height-38) var(--font-family-sans);
+  /* App 页标题 / 分区标题（产品默认 24/32） */
+  --text-h2: var(--font-weight-semibold) var(--font-size-24) / var(--line-height-32)
+    var(--font-family-sans); /* headlineSmall · 默认页标题 */
+  --text-h3: var(--font-weight-semibold) var(--font-size-20) / var(--line-height-28)
+    var(--font-family-sans); /* titleLarge · 卡片/确认弹窗 */
+
+  /* —— Title —— */
+  /* titleLarge：表单弹窗标题 / 强调小标题（与 --text-h3 同规格；App 现行友好） */
+  --text-title: var(--font-weight-semibold) var(--font-size-20) / var(--line-height-28)
+    var(--font-family-sans);
+  --text-title-sm: var(--font-weight-regular) var(--font-size-16) / var(--line-height-24)
+    var(--font-family-sans); /* titleMedium regular */
+  --text-title-sm-medium: var(--font-weight-medium) var(--font-size-16) / var(--line-height-24)
+    var(--font-family-sans);
+  --text-title-sm-strong: var(--font-weight-semibold) var(--font-size-16) / var(--line-height-24)
+    var(--font-family-sans); /* Space 桌面列表页标题 */
+  --text-title-xs: var(--font-weight-regular) var(--font-size-14) / var(--line-height-22)
+    var(--font-family-sans); /* titleSmall */
+
+  /* —— Body —— */
+  --text-body-app: var(--font-weight-regular) var(--font-size-14) / var(--line-height-22)
+    var(--font-family-sans); /* bodyMedium · 主字体 */
+  --text-body-app-strong: var(--font-weight-semibold) var(--font-size-14) / var(--line-height-22)
+    var(--font-family-sans);
+  --text-body: var(--text-body-app);
+  --text-body-strong: var(--text-body-app-strong);
+  --text-body-message: var(--text-body-app);
+  --text-body-message-strong: var(--text-body-app-strong);
+  --text-body-lg: var(--font-weight-regular) var(--font-size-16) / var(--line-height-24)
+    var(--font-family-sans); /* bodyLarge */
+  --text-body-lg-strong: var(--font-weight-semibold) var(--font-size-16) / var(--line-height-24)
+    var(--font-family-sans);
+
+  /* —— 辅助 / Mark / Body Small —— */
+  --text-caption: var(--font-weight-regular) var(--font-size-12) / var(--line-height-18)
+    var(--font-family-sans); /* bodySmall / markSmall · 辅助小 12/18 */
+  --text-caption-lg: var(--font-weight-regular) var(--font-size-16) / var(--line-height-24)
+    var(--font-family-sans); /* 辅助大 16/24（同 bodyLarge 规格） */
+  --text-mark: var(--font-weight-medium) var(--font-size-14) / var(--line-height-22)
+    var(--font-family-sans); /* markMedium */
+  --text-mark-sm: var(--text-caption); /* markSmall */
+
+  /* —— Link 字号档（颜色/下划线见 smartwork_link.css） —— */
+  --text-link-lg: var(--font-weight-regular) var(--font-size-16) / var(--line-height-24)
+    var(--font-family-sans);
+  --text-link-md: var(--font-weight-regular) var(--font-size-14) / var(--line-height-22)
+    var(--font-family-sans);
+  --text-link-sm: var(--font-weight-regular) var(--font-size-12) / var(--line-height-18)
+    var(--font-family-sans);
+
+  --text-overline: var(--font-weight-medium) var(--font-size-11) / var(--line-height-16)
+    var(--font-family-sans); /* SmartWork 保留 */
+  --text-code: var(--font-weight-regular) var(--font-size-13) / var(--line-height-20) var(--font-family-mono);
+
+  --icon-text-font: var(--text-body-app);
+  --icon-text-icon-size: 16px;
+  --icon-text-icon-gap: var(--space-8, 8px);
+}
+
+/* Optional helper class: apply base rendering */
+.smartwork-typography {
+  font-family: var(--font-family-sans);
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: var(--font-feature-settings);
+}
+
+/* Optional utilities */
+.text-display-lg {
+  font: var(--text-display-lg);
+  letter-spacing: var(--letter-spacing-tight);
+}
+.text-display-md {
+  font: var(--text-display-md);
+  letter-spacing: var(--letter-spacing-tight);
+}
+.text-display {
+  font: var(--text-display);
+  letter-spacing: var(--letter-spacing-tight);
+}
+.text-headline-lg {
+  font: var(--text-headline-lg);
+  letter-spacing: var(--letter-spacing-tight);
+}
+.text-headline-md {
+  font: var(--text-headline-md);
+  letter-spacing: var(--letter-spacing-tight);
+}
+.text-h1 {
+  font: var(--text-h1);
+  letter-spacing: var(--letter-spacing-tight);
+}
+.text-h2 {
+  font: var(--text-h2);
+  letter-spacing: var(--letter-spacing-tight);
+}
+.text-h3 {
+  font: var(--text-h3);
+  letter-spacing: var(--letter-spacing-tight);
+}
+.text-title {
+  font: var(--text-title);
+}
+.text-title-sm {
+  font: var(--text-title-sm);
+}
+.text-title-sm-medium {
+  font: var(--text-title-sm-medium);
+}
+.text-title-sm-strong {
+  font: var(--text-title-sm-strong);
+}
+.text-title-xs {
+  font: var(--text-title-xs);
+}
+.text-body-app {
+  font: var(--text-body-app);
+}
+.text-body-app-strong {
+  font: var(--text-body-app-strong);
+}
+.text-body-message {
+  font: var(--text-body-message);
+}
+.text-body-message-strong {
+  font: var(--text-body-message-strong);
+}
+.text-body-lg {
+  font: var(--text-body-lg);
+}
+.text-body-lg-strong {
+  font: var(--text-body-lg-strong);
+}
+.text-body {
+  font: var(--text-body);
+}
+.text-body-strong {
+  font: var(--text-body-strong);
+}
+.text-caption {
+  font: var(--text-caption);
+}
+.text-caption-lg {
+  font: var(--text-caption-lg);
+}
+.text-mark {
+  font: var(--text-mark);
+}
+.text-mark-sm {
+  font: var(--text-mark-sm);
+}
+.text-link-lg {
+  font: var(--text-link-lg);
+}
+.text-link-md {
+  font: var(--text-link-md);
+}
+.text-link-sm {
+  font: var(--text-link-sm);
+}
+.text-overline {
+  font: var(--text-overline);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+.text-code {
+  font: var(--text-code);
+}
