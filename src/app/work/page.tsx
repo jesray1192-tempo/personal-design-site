@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata({
   title: "Work",
   description:
-    "Selected case studies from Jessica Ray — 桔子星球漫游日记, D-Hub, and AgentHub.",
+    "Selected case studies from Jessica Ray — 桔子星球漫游日记, SmartWork Design Skill, D-Hub, and AgentHub.",
   path: "/work",
 });
 
@@ -21,8 +21,8 @@ export default function WorkPage() {
           are deferred — this index stays a single list.
         </p>
         <PlaceholderBanner>
-          桔子星球漫游日记 has journey stills. D-Hub and AgentHub copy is
-          live; figures wait for stills. Do not add filters yet.
+          桔子星球漫游日记 has journey stills. SmartWork, D-Hub, and AgentHub
+          copy is live; figures wait for stills. Do not add filters yet.
         </PlaceholderBanner>
       </header>
 

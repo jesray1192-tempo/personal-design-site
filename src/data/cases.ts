@@ -60,7 +60,7 @@ export type CaseStudy = {
  *
  * Cover and journey stills for 桔子星球漫游日记 live under
  * `public/cases/orange-planet-diary/`.
- * D-Hub and AgentHub copy is live; figures wait for stills.
+ * D-Hub, AgentHub, and SmartWork Design Skill copy is live; figures wait for stills.
  */
 export const caseStudies: CaseStudy[] = [
   {
@@ -135,8 +135,35 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: "d-hub",
+    slug: "smartwork-design-skill",
     number: "02",
+    title: "SmartWork Design Skill",
+    dek: "把设计决策、语义 Token 与组件状态写成可复用的代码规则。",
+    year: "2026",
+    role: "设计系统 / 体验设计",
+    client: "AI 工作台 · 设计系统",
+    duration: "2026",
+    featured: true,
+    tags: ["设计系统", "AI 工作台", "Design Token"],
+    locale: "zh-Hans",
+    overview:
+      "SmartWork Design Skill 把散落的设计决策收成可执行的规则：语义 Token、组件状态与命名约定写进 skill，人和模型按同一套语言改界面、查一致性。",
+    narrative: {
+      problem:
+        "设计决策散在 Figma 批注、口头约定和组件硬编码里。换色、补状态、做新页时，人和 AI 都无法可靠复用「为什么这样」。",
+      process:
+        "拆 primitive / semantic / component 三层 Token；把按钮等组件的 default / hover / disabled / loading 写成可引用规则；Skill 负责生成、校验和解释决策，而不是只吐视觉稿。",
+      result:
+        "一套可复用的 Design Skill：token → 组件状态 → 代码规则。设计系统不再只是文档，而是 AI 工作台里能跑的约束。",
+    },
+    figureCaptions: {
+      hero: "SmartWork Design Skill — Token 层级与组件状态规则。",
+      secondary: "Skill 校验：硬编码色值 vs 语义 Token 引用。",
+    },
+  },
+  {
+    slug: "d-hub",
+    number: "03",
     title: "D-Hub",
     dek: "把分散的内部产品，收成一个能找、能进、能继续做事的工作台。",
     year: "2025",
@@ -163,7 +190,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "agenthub",
-    number: "03",
+    number: "04",
     title: "AgentHub",
     dek: "让人把任务交给 Agent，同时还能看见它做了什么、为什么、怎么改。",
     year: "2025",

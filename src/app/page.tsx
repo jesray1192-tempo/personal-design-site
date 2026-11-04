@@ -47,8 +47,8 @@ export default function HomePage() {
             Currently
           </p>
           <p className="font-serif text-2xl leading-snug">
-            D-Hub and AgentHub — a workplace hub and an inspectable Agent
-            platform.
+            SmartWork Design Skill, D-Hub, and AgentHub — design rules, a
+            workplace hub, and an inspectable Agent platform.
           </p>
           <p className="text-sm text-muted">{site.location}</p>
         </aside>
@@ -56,9 +56,9 @@ export default function HomePage() {
 
       <div className="mt-10">
         <PlaceholderBanner>
-          Selected work now includes D-Hub and AgentHub. Swap remaining
-          [PLACEHOLDER] copy for Jessica&apos;s voice. Do not add investment
-          work.
+          Selected work lists 桔子星球, SmartWork, D-Hub, and AgentHub. Swap
+          remaining [PLACEHOLDER] copy for Jessica&apos;s voice. Do not add
+          investment work.
         </PlaceholderBanner>
       </div>
 
