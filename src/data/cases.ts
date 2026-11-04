@@ -59,7 +59,9 @@ export type CaseStudy = {
  * Do not add investment or trading product work here.
  *
  * Cover and journey stills for 桔子星球漫游日记 live under
- * `public/cases/orange-planet-diary/`.
+ * `public/cases/orange-planet-diary/`. The case route renders a Zcool
+ * showreel whose cover is the UFO gif (`page-hero.gif`). The flower gif
+ * (`public/home-hero.gif`) is the homepage hero only.
  * D-Hub, AgentHub, and SmartWork Design Skill copy is live; figures wait for stills.
  */
 export const caseStudies: CaseStudy[] = [
